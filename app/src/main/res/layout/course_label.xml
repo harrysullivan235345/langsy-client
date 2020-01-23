@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/course_label"
-    tools:context=".CourseLabel">
+    android:background="@drawable/course_label">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/course_label_language"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="русский"
@@ -19,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/course_label_cash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="$343.23"
