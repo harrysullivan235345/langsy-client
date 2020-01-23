@@ -3,6 +3,8 @@
 
     <string name="app_name_caps">langsy</string>
     <string name="motto">language learning built on failure</string>
-
     <string name="home_page_button">begin you bitch</string>
+
+    <string name="dashboard_heading">dashboard</string>
+    <string name="my_courses">my courses</string>
 </resources>
