@@ -16,14 +16,7 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
-        val inflater = this.layoutInflater
-        val main = findViewById<LinearLayout>(R.id.dashboard_courselist)
-
-        val courseLabel = inflater.inflate(R.layout.course_label, main, false)
-        main.addView(courseLabel)
-
-//        val listView = findViewById<ListView>(R.id.dashboard_course_list)
-//        listView.adapter = CourseListAdapter(this)
-//        listView.setDivider(null)
+        val courseList = findViewById<LinearLayout>(R.id.dashboard_courselist)
+        CourseListAdapter(this.layoutInflater, courseList)
     }
 }
