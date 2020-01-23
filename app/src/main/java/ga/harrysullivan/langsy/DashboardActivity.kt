@@ -1,13 +1,8 @@
 package ga.harrysullivan.langsy
 
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.*
-import androidx.constraintlayout.widget.ConstraintLayout
+import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
 import ga.harrysullivan.langsy.adapters.CourseListAdapter
 
 class DashboardActivity : AppCompatActivity() {
