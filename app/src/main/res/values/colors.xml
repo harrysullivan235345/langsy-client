@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#176e9b</color>
+    <color name="colorPrimaryDark">#176e9b</color>
+    <color name="colorAccent">#ff07ca</color>
+
+    <color name="wrong">#f03f3f</color>
+    <color name="missing">#ff8800</color>
+
+    <color name="buttonText">#004668</color>
+
+    <!--    Gradients-->
+    <color name="startDarkBlue">#176e9b</color>
+    <color name="endDarkBlue">#004668</color>
+
+    <color name="startBluePink">#00fffb</color>
+    <color name="endBluePink">#ff07ca</color>
+
+    <color name="startBluePurple">#7dc1ec</color>
+    <color name="endBluePurple">#c14ef1</color>
+
+    <color name="startYellowAmber">#ffd061</color>
+    <color name="endYellowAmber">#ff857c</color>
+
+    <color name="startBlueGreen">#007984</color>
+    <color name="endBlueGreen">#1fab86</color>
+
+    <color name="startRedPurple">#d83838</color>
+    <color name="endRedPurple">#964184</color>
+
+    <color name="startPinkPurple">#fc5598</color>
+    <color name="endPinkPurple">#ca6dff</color>
+
+    <color name="startWhiteGrey">#c0c0c0</color>
+    <color name="endWhiteGrey">#8e99a1</color>
+</resources>
