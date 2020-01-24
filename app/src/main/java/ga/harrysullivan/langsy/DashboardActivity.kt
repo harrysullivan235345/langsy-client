@@ -1,5 +1,6 @@
 package ga.harrysullivan.langsy
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -14,11 +15,15 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
-        val courseList = findViewById<LinearLayout>(R.id.dashboard_courselist)
-        CourseListAdapter(this.layoutInflater, courseList)
+        CourseListAdapter(this.layoutInflater, dashboard_courselist)
 
         val insult = Insults(application).getInsult()
         dasboard_add_course_button.text = "add course ${insult}"
+
+        dasboard_add_course_button.setOnClickListener {
+            val intent = Intent(this@DashboardActivity, CourseSelectionActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }

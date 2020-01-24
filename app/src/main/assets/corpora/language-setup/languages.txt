@@ -1,0 +1,17 @@
+ar
+de
+es
+fa
+fr
+hi
+it
+ja
+pl
+pt
+ru
+sv
+sw
+th
+tr
+uk
+zh
