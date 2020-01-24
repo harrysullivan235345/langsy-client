@@ -90,13 +90,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView7"></LinearLayout>
 
             <TextView
-                android:id="@+id/add_course_button"
+                android:id="@+id/dasboard_add_course_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/white_button"
                 android:clickable="true"
-                android:text="@string/add_course"
                 android:textColor="@color/buttonText"
                 android:textSize="18sp"
                 app:fontFamily="@font/muli"
