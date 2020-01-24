@@ -14,22 +14,22 @@ class CourseSelectionActivity : AppCompatActivity() {
         setContentView(R.layout.activity_course_selection)
 
         val languages = listOf<List<String>>(
-            listOf<String>("sv", "Svenska"),
+            listOf<String>("sv", "svenska"),
             listOf<String>("ar", "العربية"),
-            listOf<String>("de", "Deutsch"),
-            listOf<String>("fr", "Français"),
-            listOf<String>("ru", "Русский"),
+            listOf<String>("de", "deutsch"),
+            listOf<String>("fr", "français"),
+            listOf<String>("ru", "русский"),
             listOf<String>("it", "Italiano"),
             listOf<String>("es", "Español"),
             listOf<String>("pl", "Polski"),
             listOf<String>("ja", "日本語"),
             listOf<String>("pt", "Português"),
-            listOf<String>("uk", "Українська"),
+            listOf<String>("uk", "українська"),
             listOf<String>("fa", "فارسی"),
             listOf<String>("hi", "हिन्दी"),
-            listOf<String>("tr", "Türkçe"),
+            listOf<String>("tr", "türkçe"),
             listOf<String>("th", "ไทย"),
-            listOf<String>("sw", "Kiswahili")
+            listOf<String>("sw", "kiswahili")
         )
 
         CourseSelectionAdapter(this.layoutInflater, course_selection_list, languages)
