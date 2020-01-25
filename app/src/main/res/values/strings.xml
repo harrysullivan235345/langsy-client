@@ -10,4 +10,8 @@
     <string name="add_course">add a course cunt</string>
 
     <string name="course_selection_heading">course selection</string>
+
+    <string name="visual_learning_heading">visual</string>
+    <string name="drawing_box_label">drawing</string>
+    <string name="handwrite_label">handwrite</string>
 </resources>

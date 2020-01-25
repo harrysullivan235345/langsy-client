@@ -8,7 +8,7 @@
     tools:context=".CourseSelectionActivity">
 
     <ScrollView
-        android:id="@+id/dashboard_scrollview"
+        android:id="@+id/course_selection_scrollview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fillViewport="true"
