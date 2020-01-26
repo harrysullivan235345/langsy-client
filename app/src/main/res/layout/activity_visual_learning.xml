@@ -67,19 +67,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="42dp"
-                android:layout_marginLeft="42dp"
-                android:layout_marginTop="32dp"
-                android:text="здравствуйте"
-                android:textColor="@android:color/white"
-                android:textSize="22sp"
-                app:fontFamily="@font/muli"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="16dp"
+        android:text="здравствуйте"
+        android:textColor="@android:color/white"
+        android:textSize="22sp"
+        app:fontFamily="@font/muli"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -92,7 +92,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="0.6">
 
             <ga.harrysullivan.langsy.components.PaintView
@@ -104,7 +104,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="42dp"
                 android:layout_marginRight="42dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="8dp"
                 android:background="@drawable/paint_view"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -127,7 +127,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1">
 
             <TextView
@@ -151,13 +151,35 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="42dp"
                 android:layout_marginRight="42dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="8dp"
                 android:background="@drawable/paint_view"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.05">
+
+            <TextView
+                android:id="@+id/visual_learning_next_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="42dp"
+                android:layout_marginRight="42dp"
+                android:background="@drawable/white_button_sm"
+                android:clickable="true"
+                android:text="next"
+                android:textColor="@color/buttonText"
+                android:textSize="18sp"
+                app:fontFamily="@font/muli"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dashboard_courselist" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 

@@ -12,6 +12,13 @@
     <string name="course_selection_heading">course selection</string>
 
     <string name="visual_learning_heading">visual</string>
+
+    <string name="application_learning_heading">application</string>
+
     <string name="drawing_box_label">drawing</string>
     <string name="handwrite_label">handwrite</string>
+    <string name="transliteration_label">transliteration</string>
+    <string name="sentence_1_label">sentence 1</string>
+    <string name="sentence_2_label">sentence 2</string>
+    <string name="sentence_3_label">sentence 3</string>
 </resources>

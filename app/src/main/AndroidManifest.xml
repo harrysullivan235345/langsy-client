@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".VisualLearningActivity"></activity>
+        <activity android:name=".ApplicationLearningActivity"></activity>
+        <activity android:name=".VisualLearningActivity" />
         <activity android:name=".CourseSelectionActivity" />
         <activity android:name=".Test" />
         <activity android:name=".CourseLabel" />
