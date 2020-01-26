@@ -6,7 +6,7 @@
 Langsy is a modern take to the language learning process. It uses real principles from the cutting edge of cognitive psychology to best balance ease and retention.
 
 * Reduces **the time** that you can become proficient in a new language.
-* Reduces the **hassle** typically associated with language learning (endless conjugation tables)
+* Reduces the **hassle** typically associated with language learning
 
 ## Who Uses Langsy
 
@@ -27,6 +27,9 @@ Langsy is a modern take to the language learning process. It uses real principle
 4. talk about things
 
 #### Semantic
+<p align="center">
+  <img src="./app/src/main/assets/img/semantic-learning.png" alt="Visual Learning">
+</p>
 1. talk about things
 2. talk about things
 3. talk about things
@@ -47,6 +50,9 @@ Langsy is a modern take to the language learning process. It uses real principle
 4. talk about things
 
 #### Monetary Significance
+<p align="center">
+  <img src="./app/src/main/assets/img/dashboard.png" alt="Visual Learning">
+</p>
 1. talk about things
 2. talk about things
 3. talk about things
