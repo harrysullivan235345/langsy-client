@@ -1,14 +1,9 @@
 package ga.harrysullivan.langsy.adapters
 
-import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import ga.harrysullivan.langsy.CourseSelectionActivity
 import ga.harrysullivan.langsy.R
-import kotlinx.android.synthetic.main.activity_dashboard.*
 
 class CourseSelectionAdapter(
     inflater: LayoutInflater,

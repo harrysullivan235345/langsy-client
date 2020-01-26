@@ -2,8 +2,6 @@ package ga.harrysullivan.langsy
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import ga.harrysullivan.langsy.adapters.CourseSelectionAdapter
 import kotlinx.android.synthetic.main.activity_course_selection.*
@@ -33,9 +31,14 @@ class CourseSelectionActivity : AppCompatActivity() {
             listOf<String>("sw", "kiswahili")
         )
 
-        CourseSelectionAdapter(this.layoutInflater, course_selection_list, languages, fun(langCode: String) {
-            val intent = Intent(this@CourseSelectionActivity, VisualLearningActivity::class.java)
-            startActivity(intent)
-        })
+        CourseSelectionAdapter(
+            this.layoutInflater,
+            course_selection_list,
+            languages,
+            fun(langCode: String) {
+                val intent =
+                    Intent(this@CourseSelectionActivity, VisualLearningActivity::class.java)
+                startActivity(intent)
+            })
     }
 }

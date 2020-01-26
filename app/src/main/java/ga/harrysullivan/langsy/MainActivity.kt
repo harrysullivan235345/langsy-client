@@ -3,7 +3,6 @@ package ga.harrysullivan.langsy
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import ga.harrysullivan.langsy.utils.Insults
 import kotlinx.android.synthetic.main.activity_main.*
 
 
