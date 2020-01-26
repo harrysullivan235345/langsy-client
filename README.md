@@ -30,6 +30,7 @@ Langsy is a modern take to the language learning process. It uses real principle
 <p align="center">
   <img src="./app/src/main/assets/img/semantic-learning.png" alt="Visual Learning">
 </p>
+
 1. talk about things
 2. talk about things
 3. talk about things
@@ -53,6 +54,7 @@ Langsy is a modern take to the language learning process. It uses real principle
 <p align="center">
   <img src="./app/src/main/assets/img/dashboard.png" alt="Visual Learning">
 </p>
+
 1. talk about things
 2. talk about things
 3. talk about things
