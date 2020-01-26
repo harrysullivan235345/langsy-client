@@ -13,7 +13,7 @@ class SemanticLearningActivity : AppCompatActivity() {
 
         val revealPanelAdapter = RevealPanelAdapter(this.layoutInflater, semantic_learning_root)
 
-        visual_learning_reveal.setOnClickListener{
+        semantic_learning_reveal.setOnClickListener{
             revealPanelAdapter.show()
         }
     }

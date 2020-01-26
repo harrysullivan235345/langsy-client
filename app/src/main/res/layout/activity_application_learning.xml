@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/application_learning_root"
     android:background="@drawable/gradient_blue_green"
     tools:context=".ApplicationLearningActivity">
 
@@ -51,7 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
-        android:id="@+id/visual_learning_reveal"
+        android:id="@+id/application_learning_reveal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
