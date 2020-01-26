@@ -15,6 +15,8 @@
     <string name="application_learning_heading">application</string>
     <string name="semantic_learning_heading">semantic</string>
 
+    <string name="assessment_learning_heading">assessment</string>
+
     <string name="drawing_box_label">drawing</string>
     <string name="handwrite_label">handwrite</string>
     <string name="transliteration_label">transliteration</string>
@@ -22,4 +24,5 @@
     <string name="sentence_2_label">sentence 2</string>
     <string name="sentence_3_label">sentence 3</string>
     <string name="definition_label">definition</string>
+    <string name="translation_label">translation</string>
 </resources>

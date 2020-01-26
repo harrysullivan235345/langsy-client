@@ -2,11 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/semantic_learning_root"
     android:layout_width="match_parent"
+    android:background="@drawable/gradient_white_grey"
+    android:id="@+id/assessment_root"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_red_purple"
-    tools:context=".SemanticLearningActivity">
+    tools:context=".AssessmentActivity">
 
     <TextView
         android:id="@+id/textView3"
@@ -15,7 +15,7 @@
         android:layout_marginStart="1dp"
         android:layout_marginLeft="1dp"
         android:layout_marginTop="32dp"
-        android:text="@string/semantic_learning_heading"
+        android:text="@string/assessment_learning_heading"
         android:textColor="@android:color/white"
         android:textSize="30sp"
         app:fontFamily="@font/muli"
@@ -30,7 +30,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:text="7 / 10"
+        android:text="45%"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         app:fontFamily="@font/muli"
@@ -38,21 +38,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="4dp"
-        android:text="3 / 3"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:fontFamily="@font/muli"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <TextView
-        android:id="@+id/semantic_learning_reveal"
+        android:id="@+id/assessment_reveal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -94,12 +80,12 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.3">
+            android:layout_weight="1">
 
             <EditText
                 android:id="@+id/editText"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="42dp"
                 android:layout_marginLeft="42dp"
                 android:layout_marginTop="8dp"
@@ -112,7 +98,6 @@
                 android:selectAllOnFocus="false"
                 android:textColor="@android:color/white"
                 android:textCursorDrawable="@null"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView11" />
@@ -123,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="42dp"
                 android:layout_marginRight="42dp"
-                android:text="@string/definition_label"
+                android:text="@string/translation_label"
                 android:textColor="@android:color/white"
                 app:fontFamily="@font/muli"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -134,46 +119,10 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="0.1">
 
             <TextView
-                android:id="@+id/textView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="42dp"
-                android:layout_marginRight="42dp"
-                android:text="@string/drawing_box_label"
-                android:textColor="@android:color/white"
-                app:fontFamily="@font/muli"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ga.harrysullivan.langsy.components.PaintView
-                android:id="@+id/paintView3"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="42dp"
-                android:layout_marginLeft="42dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="42dp"
-                android:layout_marginRight="42dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/paint_view"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView12" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.05">
-
-            <TextView
-                android:id="@+id/semantic_learning_next_button"
+                android:id="@+id/assessment_next_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -189,5 +138,4 @@
                 app:layout_constraintTop_toBottomOf="@+id/dashboard_courselist" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
