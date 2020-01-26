@@ -5,10 +5,10 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#00C853"
+    android:background="#35b19b"
     android:paddingBottom="28dp"
     android:visibility="visible"
-    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent">
 
     <TextView
@@ -18,9 +18,9 @@
         android:layout_marginStart="42dp"
         android:layout_marginLeft="42dp"
         android:layout_marginTop="24dp"
-        android:text="correct"
+        android:text="quickly answer this"
         android:textColor="@android:color/white"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:fontFamily="@font/muli"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,24 +32,24 @@
         android:layout_marginStart="42dp"
         android:layout_marginLeft="42dp"
         android:layout_marginTop="8dp"
-        android:text="здравствуйте"
+        android:text="hello"
         android:textColor="@android:color/white"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:fontFamily="@font/muli"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <TextView
-        android:id="@+id/reveal_panel_hide"
+        android:id="@+id/spontaneous_recall_close_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="42dp"
         android:layout_marginRight="42dp"
         android:background="@drawable/white_button_sm"
         android:clickable="true"
-        android:text="next"
+        android:text="close"
         android:textColor="@color/buttonText"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:fontFamily="@font/muli"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
