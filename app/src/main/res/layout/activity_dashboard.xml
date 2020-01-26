@@ -96,6 +96,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/white_button"
                 android:clickable="true"
+                android:text="@string/add_course"
                 android:textColor="@color/buttonText"
                 android:textSize="18sp"
                 app:fontFamily="@font/muli"

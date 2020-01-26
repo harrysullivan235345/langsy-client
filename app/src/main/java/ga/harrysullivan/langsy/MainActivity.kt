@@ -15,9 +15,6 @@ class MainActivity : AppCompatActivity() {
 
 //        textView4.text = unidecode("Здравствуйте")
 
-        val insult = Insults(application).getInsult()
-        main_next_button.text = "begin you ${insult}"
-
         main_next_button.setOnClickListener {
             val intent = Intent(this@MainActivity, DashboardActivity::class.java)
             startActivity(intent)

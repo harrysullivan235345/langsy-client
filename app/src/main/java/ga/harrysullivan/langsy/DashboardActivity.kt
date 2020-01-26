@@ -17,9 +17,6 @@ class DashboardActivity : AppCompatActivity() {
 
         CourseListAdapter(this.layoutInflater, dashboard_courselist)
 
-        val insult = Insults(application).getInsult()
-        dasboard_add_course_button.text = "add course ${insult}"
-
         dasboard_add_course_button.setOnClickListener {
             val intent = Intent(this@DashboardActivity, CourseSelectionActivity::class.java)
             startActivity(intent)

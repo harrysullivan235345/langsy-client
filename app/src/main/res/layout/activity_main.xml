@@ -40,6 +40,7 @@
         android:layout_marginTop="50dp"
         android:background="@drawable/white_button_lg"
         android:clickable="true"
+        android:text="@string/home_page_button"
         android:textColor="@color/buttonText"
         android:textSize="18sp"
         app:fontFamily="@font/muli"
