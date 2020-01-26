@@ -7,45 +7,46 @@
     android:background="@drawable/gradient_darkblue"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/motto"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        app:fontFamily="@font/muli"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="@string/app_name_caps"
-        android:textColor="@android:color/white"
-        android:textSize="75dp"
-        app:fontFamily="@font/muli"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:text="@string/app_name_caps"
+            android:textColor="@android:color/white"
+            android:textSize="75dp"
+            app:fontFamily="@font/muli" />
 
-    <TextView
-        android:id="@+id/main_next_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/white_button_lg"
-        android:clickable="true"
-        android:text="@string/home_page_button"
-        android:textColor="@color/buttonText"
-        android:textSize="18sp"
-        app:fontFamily="@font/muli"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/motto"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:fontFamily="@font/muli" />
+
+        <TextView
+            android:id="@+id/main_next_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/white_button_lg"
+            android:clickable="true"
+            android:text="@string/home_page_button"
+            android:textColor="@color/buttonText"
+            android:textSize="18sp"
+            app:fontFamily="@font/muli" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
