@@ -1,0 +1,96 @@
+﻿Je ne visite pas
+Vous ne visitez pas
+Il ne vient pas
+Elle ne vient pas
+Il ne visite pas
+Nous ne visitons pas
+Vous ne visitez pas
+Ils ne visitent pas
+Je n'étudie pas
+Vous n'étudiez pas
+Il n'étudie pas.
+Elle n'étudie pas.
+Il n'étudie pas
+Nous n'étudions pas
+Vous n'étudiez pas
+Ils n'étudient pas
+Je n'ai pas joué.
+Tu n'as pas joué.
+Il n'a pas joué.
+Elle n'a pas joué.
+Il n'a pas joué
+On n'a pas joué.
+Tu n'as pas joué.
+Ils n'ont pas joué
+Je ne cuisinerai pas.
+Vous ne cuisinerez pas
+Il ne cuisinera pas.
+Elle ne cuisinera pas.
+Il ne cuisinera pas
+Nous ne cuisinerons pas
+Vous ne cuisinerez pas
+Ils ne cuisineront pas.
+Je ne vais pas voler
+Tu ne vas pas voler.
+Il ne va pas voler
+Elle ne volera pas.
+Il ne va pas voler
+On ne va pas voler.
+Tu ne vas pas voler.
+Ils ne vont pas voler
+Je ne serai pas assis
+Vous ne serez pas assis
+Il ne sera pas assis
+Elle ne sera pas assise
+Il ne sera pas assis
+Nous ne serons pas assis
+Vous ne serez pas assis
+Ils ne seront pas assis
+Je n'ai pas vu
+Vous n'avez pas vu
+Il n'a pas vu
+Elle n'a pas vu
+Il n'a pas vu
+Nous n'avons pas vu
+Vous n'avez pas vu
+Ils n'ont pas vu
+Je n'ai pas étudié.
+Tu n'as pas étudié.
+Il n'a pas étudié.
+Elle n'a pas étudié.
+Il n'a pas étudié
+Nous n'avons pas étudié
+Tu n'as pas étudié.
+Ils n'ont pas étudié
+Je n'avais pas mangé.
+Tu n'avais pas mangé.
+Il n'avait pas mangé
+Elle n'avait pas mangé
+Il n'avait pas mangé
+Nous n'avions pas mangé
+Tu n'avais pas mangé.
+Ils n'avaient pas mangé
+Je n'avais pas dormi.
+Tu n'avais pas dormi.
+Il n'avait pas dormi.
+Elle n'avait pas dormi.
+Il n'avait pas dormi
+On n'avait pas dormi.
+Tu n'avais pas dormi.
+Ils n'avaient pas dormi
+Je ne me suis pas préparé
+Vous n'aurez pas préparé
+Il ne se sera pas préparé
+Elle ne se sera pas préparée.
+Il n'aura pas préparé
+Nous n'aurons pas préparé
+Vous n'aurez pas préparé
+Ils n'auront pas préparé
+Je n'aurai pas conduit.
+Tu n'auras pas conduit.
+Il n'aura pas conduit.
+Elle n'aura pas conduit.
+Il n'aura pas conduit
+Nous n'aurons pas conduit
+Tu n'auras pas conduit.
+Ils n'auront pas conduit

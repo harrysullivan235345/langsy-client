@@ -1,0 +1,96 @@
+﻿Wie oft esse ich
+Wie oft essen Sie
+Wie oft isst er
+Wie oft isst sie
+Wie oft isst es
+Wie oft essen wir
+Wie oft essen Sie
+Wie oft essen sie
+Was mache ich
+Was machst du
+Was tut er?
+Was macht sie?
+Was tut sie?
+Was machen wir?
+Was machst du
+Was tun sie
+Wohin ging ich
+Wohin bist du gegangen
+Wo ist er hin
+Wohin ging sie
+Wohin ging es?
+Wohin sind wir gegangen?
+Wohin bist du gegangen
+Wohin sind sie gegangen?
+Wann helfe ich
+Wann helfen Sie
+Wann wird er helfen
+Wann wird sie helfen
+Wann wird es helfen
+Wann werden wir helfen
+Wann helfen Sie
+Wann werden sie helfen
+Wo werde ich bleiben?
+Wo werden Sie übernachten?
+Wo wird er bleiben?
+Wo wird sie bleiben?
+Wo wird es bleiben?
+Wo werden wir bleiben?
+Wo werden Sie übernachten?
+Wo werden sie bleiben?
+Wo werde ich mich aufhalten?
+Wo werden Sie sich aufhalten?
+Wo wird er sich aufhalten?
+Wo wird sie sich aufhalten?
+Wo wird es bleiben
+Wo werden wir uns aufhalten?
+Wo werden Sie sich aufhalten?
+Wo werden sie sich aufhalten?
+Wie lange habe ich gelebt?
+Wie lange haben Sie gelebt?
+Wie lange hat er gelebt?
+Wie lange hat sie gelebt?
+Wie lange hat sie gelebt?
+Wie lange haben wir gelebt?
+Wie lange haben Sie gelebt?
+Wie lange haben sie gelebt?
+Wie lange studiere ich schon
+Wie lange haben Sie studiert
+Wie lange studiert er schon
+Wie lange studiert sie schon
+Wie lange hat sie studiert
+Wie lange studieren wir schon
+Wie lange haben Sie studiert
+Wie lange studieren sie schon
+Wo hatte ich gegessen?
+Wo hast du gegessen?
+Wo hatte er gegessen?
+Wo hatte sie gegessen?
+Wo hatte es gegessen
+Wo haben wir gegessen?
+Wo hast du gegessen?
+Wo hatten sie gegessen?
+Wie lange hatte ich gearbeitet?
+Wie lange haben Sie gearbeitet?
+Wie lange hatte er gearbeitet?
+Wie lange hatte sie gearbeitet?
+Wie lange hat es funktioniert
+Wie lange haben wir gearbeitet?
+Wie lange haben Sie gearbeitet?
+Wie lange hatten sie gearbeitet?
+Wie viele Bücher werde ich fertig haben
+Wie viele Bücher werden Sie fertig haben
+Wie viele Bücher wird er fertig haben
+Wie viele Bücher wird sie fertig haben
+Wie viele Bücher wird es fertig haben
+Wie viele Bücher werden wir fertig haben
+Wie viele Bücher werden Sie fertig haben
+Wie viele Bücher werden sie fertig haben
+Wie lange werde ich arbeiten
+Wie lange werden Sie gearbeitet haben
+Wie lange wird er noch gearbeitet haben?
+Wie lange wird sie arbeiten
+Wie lange wird es funktionieren?
+Wie lange werden wir arbeiten
+Wie lange werden Sie gearbeitet haben
+Wie lange werden sie arbeiten

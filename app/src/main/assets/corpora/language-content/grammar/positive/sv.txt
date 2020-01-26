@@ -1,0 +1,104 @@
+﻿Jag äter
+Du äter
+Han äter
+Hon äter
+Det äter
+Vi äter
+Du äter
+De äter
+Jag lär mig
+Du lär dig
+Han lär sig
+Hon lär sig
+Det är lärande
+Vi lär
+Du lär dig
+De lär sig
+Jag gick
+Du gick
+Han gick
+Hon gick
+Det gick
+Åkte vi
+Du gick
+De gick
+Jag var matlagning
+Du var matlagning
+Han var matlagning
+Hon var matlagning
+Det var matlagning
+Vi var matlagning
+Du var matlagning
+De var matlagning
+Jag kommer att komma
+Du kommer att komma
+Han kommer att komma
+Hon kommer att komma
+Det kommer att komma
+Vi kommer att komma
+Du kommer att komma
+De kommer att komma
+Jag kommer att flyga
+Du kommer att flyga
+Han kommer att flyga
+Hon kommer att flyga
+Det kommer att flyga
+Vi kommer att flyga
+Du kommer att flyga
+De kommer att flyga
+Jag kommer att arbeta
+Du kommer att arbeta
+Han kommer att arbeta
+Hon kommer att arbeta
+Det kommer att fungera
+Vi kommer att arbeta
+Du kommer att arbeta
+De kommer att arbeta
+Jag har undervisat
+Du har undervisat
+Han har undervisat
+Hon har undervisat
+Den har undervisat
+Vi har undervisat
+Du har undervisat
+De har undervisat
+Jag har tittat
+Du har tittat
+Han har tittat
+Hon har tittat
+Det har varit att titta på
+Vi har tittat
+Du har tittat
+De har tittat
+Jag hade ätit
+Du hade ätit
+Han hade ätit
+Hon hade ätit
+Det hade ätit
+Vi hade ätit
+Du hade ätit
+De hade ätit
+Jag hade jobbat
+Du hade jobbat
+Han hade arbetat
+Hon hade jobbat
+Det hade arbetat
+Vi hade jobbat
+Du hade jobbat
+De hade arbetat
+Jag kommer att ha avslutat
+Du kommer att ha avslutat
+Han kommer att ha avslutat
+Hon kommer att ha avslutat
+Den kommer att ha avslutat
+Vi kommer att ha avslutat
+Du kommer att ha avslutat
+De kommer att ha avslutat
+Jag kommer att ha studerat
+Du kommer att ha studerat
+Han kommer att ha studerat
+Hon kommer att ha studerat
+Det kommer att ha studerat
+Vi kommer att ha studerat
+Du kommer att ha studerat
+De kommer att ha studerat

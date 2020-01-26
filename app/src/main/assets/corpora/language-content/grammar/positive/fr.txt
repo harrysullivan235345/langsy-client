@@ -1,0 +1,104 @@
+﻿Je mange
+Vous mangez
+Il mange
+Elle mange
+Il mange
+Nous mangeons
+Vous mangez
+Ils mangent
+J'apprends
+Vous apprenez
+Il apprend
+Elle apprend
+C'est apprendre
+Nous apprenons
+Vous apprenez
+Ils apprennent
+J'y suis allé
+Vous y êtes allé
+Il y est allé
+Elle y est allée
+Il est allé
+Nous y sommes allés
+Vous y êtes allé
+Ils sont allés
+Je cuisinais
+Tu cuisinais
+Il cuisinait
+Elle cuisinait
+C'était la cuisine
+Nous cuisinions
+Tu cuisinais
+Ils cuisinaient
+Je viendrai
+Vous viendrez
+Il viendra
+Elle viendra
+Il viendra
+Nous viendrons
+Vous viendrez
+Ils viendront
+Je vais voler
+Tu vas voler
+Il va voler
+Elle va voler
+Il va voler
+Nous allons voler
+Tu vas voler
+Ils vont voler
+Je vais travailler
+Vous travaillerez
+Il travaillera
+Elle travaillera
+Il fonctionnera
+Nous allons travailler
+Vous travaillerez
+Ils travailleront
+J'ai enseigné
+Vous avez enseigné
+Il a enseigné
+Elle a enseigné
+Il a enseigné
+Nous avons enseigné
+Vous avez enseigné
+Ils ont enseigné
+J'ai regardé
+Vous avez regardé
+Il a regardé
+Elle a regardé
+Il a observé
+Nous avons observé
+Vous avez regardé
+Ils ont regardé
+J'avais mangé
+Vous aviez mangé
+Il avait mangé
+Elle avait mangé
+Il avait mangé
+Nous avions mangé
+Vous aviez mangé
+Ils avaient mangé
+J'avais travaillé
+Vous aviez travaillé
+Il avait travaillé
+Elle avait travaillé
+Il avait travaillé
+Nous avions travaillé
+Vous aviez travaillé
+Ils avaient travaillé
+J'aurai fini
+Vous aurez fini
+Il aura fini
+Elle aura fini
+Il aura terminé
+Nous aurons fini
+Vous aurez fini
+Ils auront fini
+J'aurai étudié
+Vous aurez étudié
+Il aura étudié
+Elle aura étudié
+Il aura étudié
+Nous aurons étudié
+Vous aurez étudié
+Ils auront étudié

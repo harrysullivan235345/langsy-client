@@ -1,0 +1,96 @@
+﻿Ziyaret emsevmem.
+Ziyaret etmiyorsun.
+Ziyarete gelmiyor.
+Ziyarete gelmiyor.
+Ziyaret etmez.
+Ziyaret etmiyoruz.
+Ziyaret etmiyorsun.
+Ziyaret etmezler.
+Ders çalışmıyorum.
+Ders çalışmıyorsun.
+Ders çalışmıyor.
+Ders çalışmıyor.
+Ders çalışmıyor.
+Ders çalışmıyoruz.
+Ders çalışmıyorsun.
+Ders çalışmıyorlar.
+Ben oynamadım.
+Sen oynamadın.
+Oynamadı.
+Oynamadı.
+Çalmadı.
+Biz oynamadık.
+Sen oynamadın.
+Oynamadılar.
+Yemek yapmayacağım.
+Yemek pişirmeyeceksin.
+Yemek yapmaz.
+Yemek pişirmiyor.
+Pişmez.
+Yemek yapmayacağız.
+Yemek pişirmeyeceksin.
+Yemek pişirmezler.
+Ben uçmayacağım.
+Uçmayacaksın.
+Uçmayacak.
+Uçmayacak.
+Uçmayacak.
+Uçmayacağız.
+Uçmayacaksın.
+Uçmayacaklar.
+Oturmayacağım.
+Oturmayacaksın.
+Oturmayacak.
+Oturmayacak.
+Oturmayacak.
+Oturmayacağız.
+Oturmayacaksın.
+Oturmayacaklar.
+Görmedim.
+Görmedin.
+Görmedi.
+Görmedi.
+Görmedi.
+Daha görmedik.
+Görmedin.
+Görmediler.
+Ders çalışmıyorum.
+Hiç çalışmadın.
+Ders çalışmıyor.
+Ders çalışmıyor.
+Çalışmıyor.
+Ders çalışmıyoruz.
+Hiç çalışmadın.
+Ders çalışmıyorlar.
+Bir şey yemedim.
+Daha bir şey yemedin.
+Bir şey yememişti.
+Bir şey yememişti.
+Bir şey yememişti.
+Daha yememiştik.
+Daha bir şey yemedin.
+Bir şey yememişlerdi.
+Uyuyamıyordum.
+Uyumuyorsun.
+Uyuyamıyordu.
+Uyuyamıyordu.
+Uyumamıştı.
+Uyumuyorduk.
+Uyumuyorsun.
+Uyumuyorlardı.
+Hazırlıklı olmayacağım.
+Hazırlık yapmış olmayacaksın.
+Hazırlıklı olmayacak.
+Hazırlıklı olmayacak.
+Hazırlıklı olmayacak.
+Hazırlıklı olmayacağız.
+Hazırlık yapmış olmayacaksın.
+Hazırlanmayacaklar.
+Araba kullanmayacağım.
+Araba kullanmamış sın.
+Araba kullanmamış olmalı.
+Araba kullanmamış olmalı.
+Araba kullanmamış olmalı.
+Araba kullanmamış olmayacağız.
+Araba kullanmamış sın.
+Araba kullanmamış olmalılar.

@@ -1,0 +1,104 @@
+﻿Ben yerim.
+Yemek yersin.
+Yemek yiyor.
+Yemek yiyor.
+Yiyor.
+Yemek yeriz.
+Yemek yersin.
+Yemek yiyorlar.
+Öğreniyorum
+Öğreniyorsun.
+Öğreniyor.
+Öğreniyor.
+Öğreniyor.
+Öğreniyoruz
+Öğreniyorsun.
+Öğreniyorlar.
+Gittim.
+Sen gittin.
+O gitti.
+O gitti.
+Gitti.
+Gittik.
+Sen gittin.
+Gittiler.
+Yemek pişiriyordum.
+Yemek yapıyordun.
+Yemek yapıyordu.
+Yemek yapıyordu.
+Yemek yapıyordu.
+Yemek yapıyorduk.
+Yemek yapıyordun.
+Yemek yapıyorlardı.
+Geleceğim.
+Geleceksin.
+Gelecek.
+Gelecek.
+Gelecek.
+Geleceğiz.
+Geleceksin.
+Gelecekler.
+Ben uçacağım.
+Uçacaksın.
+Uçacak.
+Uçacak.
+Uçacak.
+Uçacağız.
+Uçacaksın.
+Uçacaklar.
+Çalışacağım.
+Çalışabileceksin.
+O çalışıyor olacak
+O çalışıyor olacak
+Bu işe yolacak
+Biz çalışacağız
+Çalışabileceksin.
+Çalışacaklar.
+Ben öğrettim
+Sen öğrettin.
+O öğretti
+O öğretti
+Bu öğretti
+Biz öğrettik
+Sen öğrettin.
+Onlar öğretti
+İzliyorum.
+İzliyorsun.
+İzliyor.
+İzliyor.
+İzliyor.
+İzliyoruz.
+İzliyorsun.
+İzliyorlardı.
+Yemek yemiştim.
+Yemiştin.
+Yemek yemişti.
+Yemek yemişti.
+Yemişti.
+Yemek yemiştimiz.
+Yemiştin.
+Yemişlerdi.
+Çalışıyordum.
+Çalışıyordun.
+Çalışıyordu.
+Çalışıyordu.
+Çalışıyordu.
+Çalışıyorduk.
+Çalışıyordun.
+Çalışıyorlardı.
+Bitirmiş olacak.
+Bitirmiş olacak.
+Bitirmiş olacak.
+O bitmiş olacak
+Bitmiş olacak.
+Bitirmiş olacağız.
+Bitirmiş olacak.
+Bitirmiş olacaklar.
+Ders çalışıyor olacak.
+Ders çalışıyor olacak.
+O, ders çalışıyor olacak.
+O çalışıyor olacak
+Bu eğitim olacak
+Biz çalışıyor olacak
+Ders çalışıyor olacak.
+Onlar okuyor olacak

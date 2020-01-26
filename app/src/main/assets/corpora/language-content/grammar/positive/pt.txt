@@ -1,0 +1,104 @@
+﻿Eu como
+Você come
+Ele come.
+Ela come
+Ele come
+Nós comemos
+Você come
+Eles comem
+Estou aprendendo
+Você está aprendendo
+Ele está aprendendo.
+Ela está aprendendo.
+É aprender
+Estamos aprendendo
+Você está aprendendo
+Eles estão aprendendo
+Eu fui
+Você foi
+Ele foi.
+Ela foi para ela.
+Foi-se.
+Nós fomos
+Você foi
+Eles foram
+Eu estava cozinhando.
+Você estava cozinhando.
+Ele estava cozinhando.
+Ela estava cozinhando.
+Estava cozinhando.
+Estávamos cozinhando.
+Você estava cozinhando.
+Eles estavam cozinhando
+Eu vou vir.
+Você virá.
+Ele virá.
+Ela virá.
+Ele virá
+Nós vamos vir
+Você virá.
+Eles virão.
+Eu vou voar.
+Você vai voar.
+Ele vai voar.
+Ela vai voar.
+Vai voar.
+Nós vamos voar.
+Você vai voar.
+Eles vão voar.
+Eu estarei trabalhando
+Você estará trabalhando
+Ele vai trabalhar.
+Ela vai trabalhar.
+Ele estará funcionando
+Nós estaremos trabalhando
+Você estará trabalhando
+Eles estarão trabalhando
+Eu ensinei
+Você ensinou
+Ele ensinou
+Ela ensinou
+Ele ensinou
+Nós ensinamos
+Você ensinou
+Eles ensinaram
+Eu tenho assistido
+Você tem assistido.
+Ele tem assistido.
+Ela tem assistido.
+Tem assistido
+Temos assistido
+Você tem assistido.
+Eles têm assistido
+Eu tinha comido
+Você tinha comido
+Ele tinha comido
+Ela tinha comido
+Tinha comido
+Tínhamos comido
+Você tinha comido
+Eles tinham comido
+Eu estava trabalhando
+Você estava trabalhando.
+Ele estava trabalhando
+Ela estava trabalhando
+Estava funcionando
+Estávamos trabalhando
+Você estava trabalhando.
+Eles estavam trabalhando
+Eu vou ter terminado
+Você terá terminado
+Ele terá terminado.
+Ela terá terminado.
+Ele terá terminado
+Teremos terminado.
+Você terá terminado
+Eles terão terminado
+Eu vou ter estudado
+Você vai ter estudado.
+Ele vai ter estudado.
+Ela vai ter estudado.
+Ele terá sido estudar
+Teremos estudado.
+Você vai ter estudado.
+Eles vão ter estudado

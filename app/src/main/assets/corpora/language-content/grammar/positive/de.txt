@@ -1,0 +1,104 @@
+﻿Ich esse
+sie essen
+Er isst
+Sie isst
+Es isst
+Wir essen
+sie essen
+Sie essen
+ich lerne
+Sie lernen
+Er lernt
+Sie lernt
+Es ist lernen
+Wir lernen
+Sie lernen
+Sie lernen
+ich ging
+Du bist gegangen
+Er ging
+Sie ging
+Es ging
+wir gingen
+Du bist gegangen
+Sie gingen
+ich habe gekocht
+Sie haben gekocht
+Er kochte
+Sie kochte
+Es wurde gekocht
+Wir kochten
+Sie haben gekocht
+Sie kochten
+ich werde kommen
+Du wirst kommen
+Er wird kommen
+Sie wird kommen
+Es wird kommen
+Wir werden kommen
+Du wirst kommen
+Sie werden kommen
+ich werde fliegen
+Du wirst fliegen
+Er wird fliegen
+Sie wird fliegen
+Es wird fliegen
+Wir werden fliegen
+Du wirst fliegen
+Sie werden fliegen
+ich werde gearbeitet haben
+Sie werden arbeiten
+Er wird arbeiten
+Sie wird arbeiten
+Es wird funktionieren
+Wir werden arbeiten
+Sie werden arbeiten
+Sie werden arbeiten
+ich habe gelehrt
+Sie haben gelehrt
+Er hat gelehrt,
+Sie hat gelehrt,
+Es hat gelehrt,
+Wir haben gelehrt,
+Sie haben gelehrt
+Sie haben gelehrt,
+ich habe beobachtet
+Sie haben zugeschaut
+Er hat zugeschaut
+Sie hat zugeschaut
+Es hat beobachtet
+Wir haben zugeschaut
+Sie haben zugeschaut
+Sie haben zugeschaut
+ich hatte gegessen
+Du hast gegessen
+Er hatte gegessen
+Sie hatte gegessen
+Es hatte gegessen
+Wir hatten gegessen
+Du hast gegessen
+Sie hatten gegessen
+ich hätte gearbeitet
+Sie hatten gearbeitet
+Er hatte gearbeitet
+Sie hatte gearbeitet
+Es hatte funktioniert
+Wir hatten gearbeitet
+Sie hatten gearbeitet
+Sie hatten gearbeitet
+ich habe fertig
+Sie werden fertig sein
+Er wird fertig sein
+Sie wird fertig sein
+Es wird beendet sein
+Wir werden fertig sein
+Sie werden fertig sein
+Sie werden fertig sein
+ich würde studiert haben
+Sie werden studiert haben
+Er wird studiert haben
+Sie wird studiert haben
+Es wird studiert haben
+Wir werden studiert haben
+Sie werden studiert haben
+Sie werden studiert haben

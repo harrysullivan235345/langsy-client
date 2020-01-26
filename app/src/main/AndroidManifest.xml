@@ -15,7 +15,6 @@
         <activity android:name=".VisualLearningActivity" />
         <activity android:name=".CourseSelectionActivity" />
         <activity android:name=".Test" />
-        <activity android:name=".CourseLabel" />
         <activity android:name=".DashboardActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
