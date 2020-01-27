@@ -7,6 +7,10 @@ import ga.harrysullivan.langsy.models.Content
 class ContentRepository(private val contentDao: ContentDao) {
     val allContent: LiveData<List<Content>> = contentDao.fetchAll()
 
+    fun fetchByLanguageAndStage(langCode: String, stage: Int): LiveData<List<Content>> {
+        return contentDao.fetchByLanguageAndStage(langCode, stage)
+    }
+
     suspend fun insert(arg: Content) {
         contentDao.insert(arg)
     }

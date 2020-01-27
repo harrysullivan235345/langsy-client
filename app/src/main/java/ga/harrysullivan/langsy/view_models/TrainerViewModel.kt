@@ -7,5 +7,7 @@ import ga.harrysullivan.langsy.repositories.TrainerRepository
 class TrainerViewModel(private val trainerRepository: TrainerRepository): ViewModel() {
     fun getTrainer() = trainerRepository.getTrainer()
 
-    fun editTrainer(trainer: Trainer) = trainerRepository.editTrainer(trainer)
+    fun editTrainer(trainer: Trainer) {
+        trainerRepository.editTrainer(trainer)
+    }
 }

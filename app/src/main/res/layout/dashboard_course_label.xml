@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="10sp"
-    android:background="@drawable/course_label">
+    android:background="@drawable/course_label"
+    android:clickable="true">
 
     <TextView
         android:id="@+id/course_label_language"

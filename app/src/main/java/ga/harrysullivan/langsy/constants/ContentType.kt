@@ -1,6 +1,6 @@
 package ga.harrysullivan.langsy.constants
 
-enum class ContentType {
-    GRAMMAR,
-    VOCAB
+object ContentType {
+    val GRAMMAR = "grammar"
+    val VOCAB = "vocab"
 }

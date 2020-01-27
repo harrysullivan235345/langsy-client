@@ -9,6 +9,9 @@ public interface ContentDao {
     @Query("select * from Content")
     fun fetchAll(): LiveData<List<Content>>
 
+    @Query("select * from Content where language = :langCode and stage < :stage")
+    fun fetchByLanguageAndStage(langCode: String, stage: Int): LiveData<List<Content>>
+
     @Insert
     suspend fun insert(arg: Content)
 

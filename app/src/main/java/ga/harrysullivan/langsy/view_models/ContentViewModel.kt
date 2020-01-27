@@ -9,15 +9,19 @@ import ga.harrysullivan.langsy.models.Content
 import ga.harrysullivan.langsy.repositories.ContentRepository
 import kotlinx.coroutines.launch
 
-class VocabViewModel(application: Application): AndroidViewModel(application) {
+class ContentViewModel(application: Application): AndroidViewModel(application) {
     private val repository: ContentRepository
 
     val allContent: LiveData<List<Content>>
 
     init {
-        val vocabDao = ContentDatabase.getDatabase(application).vocabDao()
-        repository = ContentRepository(vocabDao)
+        val contentDao = ContentDatabase.getDatabase(application).contentDao()
+        repository = ContentRepository(contentDao)
         allContent = repository.allContent
+    }
+
+    fun fetchByLanguageAndStage(langCode: String, stage: Int): LiveData<List<Content>> {
+        return repository.fetchByLanguageAndStage(langCode, stage)
     }
 
     fun insert(arg: Content) = viewModelScope.launch {

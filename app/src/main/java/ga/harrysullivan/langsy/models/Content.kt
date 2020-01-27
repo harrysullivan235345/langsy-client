@@ -10,9 +10,10 @@ data class Content(
     var type: String,
     val line: Int,
     val lastReviewed: Long,
-    val language: String
+    val language: String,
+    val partOfSpeech: String
 ) {
     override fun toString(): String {
-        return "AppIdea(uid=$uid, stage='$stage', type='$type', line='$line', lastReviewed='$lastReviewed', language='$language')"
+        return "AppIdea(uid=$uid, stage='$stage', type='$type', line='$line', lastReviewed='$lastReviewed', language='$language', partofspeech='$partOfSpeech')"
     }
 }
