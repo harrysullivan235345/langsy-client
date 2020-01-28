@@ -37,6 +37,7 @@ class VisualLearningActivity : AppCompatActivity() {
 
         viewModel.getTrainer().observe(this, Observer {
             visual_learning_translation.text = it.translation
+            revealPanelAdapter.setContent(it.content)
         })
     }
 }

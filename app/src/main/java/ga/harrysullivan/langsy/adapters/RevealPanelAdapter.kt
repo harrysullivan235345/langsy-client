@@ -20,6 +20,10 @@ class RevealPanelAdapter(inflater: LayoutInflater, parent: ViewGroup) {
         parent.addView(mPanel)
     }
 
+    fun setContent(content: String) {
+        mPanel.findViewById<TextView>(R.id.big_text).text = content
+    }
+
     fun show() {
         mPanel.visibility = View.VISIBLE
     }

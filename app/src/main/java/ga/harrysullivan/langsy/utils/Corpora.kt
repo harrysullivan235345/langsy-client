@@ -25,7 +25,7 @@ class Corpora(application: Application) {
     }
 
     fun getTrainer(content: Content): Trainer {
-        if (content.type == ContentType.GRAMMAR) {
+        if (content.type == ContentType.VOCAB) {
 
             val vocabFilename = "corpora/language-content/${content.partOfSpeech}/words.txt"
             val vocab = readFile(vocabFilename).split('\n')
