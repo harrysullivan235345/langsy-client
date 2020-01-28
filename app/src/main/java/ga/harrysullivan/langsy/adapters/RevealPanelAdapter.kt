@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import ga.harrysullivan.langsy.R
+import net.gcardone.junidecode.Junidecode.unidecode
 import org.w3c.dom.Text
 
 class RevealPanelAdapter(inflater: LayoutInflater, parent: ViewGroup) {
@@ -22,6 +23,7 @@ class RevealPanelAdapter(inflater: LayoutInflater, parent: ViewGroup) {
 
     fun setContent(content: String) {
         mPanel.findViewById<TextView>(R.id.big_text).text = content
+        mPanel.findViewById<TextView>(R.id.small_text).text = unidecode(content)
     }
 
     fun show() {

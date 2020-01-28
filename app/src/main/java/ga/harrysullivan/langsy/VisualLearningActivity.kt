@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import ga.harrysullivan.langsy.adapters.RevealPanelAdapter
 import ga.harrysullivan.langsy.utils.InjectorUtils
+import ga.harrysullivan.langsy.utils.observeOnce
 import ga.harrysullivan.langsy.view_models.TrainerViewModel
 import kotlinx.android.synthetic.main.activity_semantic_learning.*
 import kotlinx.android.synthetic.main.activity_visual_learning.*
@@ -35,7 +36,7 @@ class VisualLearningActivity : AppCompatActivity() {
         val viewModel = ViewModelProviders.of(this, trainerFactory)
             .get(TrainerViewModel::class.java)
 
-        viewModel.getTrainer().observe(this, Observer {
+        viewModel.getTrainer().observeOnce(this, Observer {
             visual_learning_translation.text = it.translation
             revealPanelAdapter.setContent(it.content)
         })
