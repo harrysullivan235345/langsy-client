@@ -3,9 +3,7 @@ package ga.harrysullivan.langsy
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Space
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -21,12 +19,12 @@ import ga.harrysullivan.langsy.view_models.ContentViewModel
 import ga.harrysullivan.langsy.view_models.CourseViewModel
 import ga.harrysullivan.langsy.view_models.TrainerViewModel
 import kotlinx.android.synthetic.main.activity_dashboard.*
-import kotlinx.android.synthetic.main.activity_main.*
 
 class DashboardActivity : AppCompatActivity() {
 
-    private lateinit var courseViewModel: CourseViewModel
-    private lateinit var contentViewModel: ContentViewModel
+    private lateinit var mCourseViewModel: CourseViewModel
+    private lateinit var mContentViewModel: ContentViewModel
+    private lateinit var mTrainerViewModel: TrainerViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,20 +35,24 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        courseViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(CourseViewModel::class.java)
-        contentViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(ContentViewModel::class.java)
+        val trainerFactory = InjectorUtils.provideTrainerViewModelFactory()
+        mTrainerViewModel = ViewModelProviders.of(this, trainerFactory)
+            .get(TrainerViewModel::class.java)
 
-        courseViewModel.allCourses.observeOnce(this, Observer { courses ->
+        mCourseViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(CourseViewModel::class.java)
+        mContentViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(ContentViewModel::class.java)
+
+        mCourseViewModel.allCourses.observeOnce(this, Observer { courses ->
             CourseListAdapter(this.layoutInflater, dashboard_courselist, courses, ::courseSelectCallback)
         })
     }
 
     private fun courseSelectCallback(course: Course) {
         Log.d("WTF IS THIS", "Getting called again")
-        contentViewModel.fetchByLanguageAndStage(course.language, SpacedRepetition.THRESHOLD_OF_PROBABALISTIC_MASTERY).observeOnce(this, Observer {
+        mContentViewModel.fetchByLanguageAndStage(course.language, SpacedRepetition.THRESHOLD_OF_PROBABALISTIC_MASTERY).observeOnce(this, Observer {
             if(it.size > SpacedRepetition.WORKING_MEMORY_CAPACITY) {
 
-                practice()
+                practice(course)
 
             } else {
 
@@ -70,30 +72,32 @@ class DashboardActivity : AppCompatActivity() {
 
         val corpora = Corpora(this.application)
 
-        val trainerFactory = InjectorUtils.provideTrainerViewModelFactory()
-        val viewModel = ViewModelProviders.of(this, trainerFactory)
-            .get(TrainerViewModel::class.java)
-
         if (totalGrammar > SpacedRepetition.MAX_GRAMMAR) {
             val content = corpora.getVocab(course.language)
             val trainer = corpora.getTrainer(content)
 
-            contentViewModel.insert(content)
-            viewModel.editTrainer(trainer)
+            mContentViewModel.insert(content)
+            mTrainerViewModel.editTrainer(trainer)
         } else {
             val content = corpora.getGrammar(course.language, selectedContent)
             val trainer = corpora.getTrainer(content)
 
-            contentViewModel.insert(content)
-            viewModel.editTrainer(trainer)
+            mContentViewModel.insert(content)
+            mTrainerViewModel.editTrainer(trainer)
         }
 
         val intent = Intent(this@DashboardActivity, VisualLearningActivity::class.java)
         startActivity(intent)
     }
 
-    private fun practice() {
-        val intent = Intent(this@DashboardActivity, SemanticLearningActivity::class.java)
-        startActivity(intent)
+    private fun practice(course: Course) {
+        mContentViewModel.fetchPractice(course.language).observeOnce(this, Observer { content ->
+            val trainer = Corpora(this.application).getTrainer(content)
+            mTrainerViewModel.editTrainer(trainer)
+
+            val intent = Intent(this@DashboardActivity, SemanticLearningActivity::class.java)
+            startActivity(intent)
+        })
+
     }
 }

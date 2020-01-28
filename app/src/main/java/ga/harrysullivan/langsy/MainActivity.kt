@@ -12,8 +12,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        textView4.text = unidecode("Здравствуйте")
-
         main_next_button.setOnClickListener {
             val intent = Intent(this@MainActivity, DashboardActivity::class.java)
             startActivity(intent)
