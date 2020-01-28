@@ -61,10 +61,10 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun newContent(
-        vocabContent: List<Content>,
+        selectedContent: List<Content>,
         course: Course
     ) {
-        val totalGrammar = vocabContent.takeIf { it.isNotEmpty() }?.fold(0) { acc, content ->
+        val totalGrammar = selectedContent.takeIf { it.isNotEmpty() }?.fold(0) { acc, content ->
             if (content.type == ContentType.GRAMMAR) acc + 1 else acc
         } ?: 0
 
@@ -81,7 +81,7 @@ class DashboardActivity : AppCompatActivity() {
             contentViewModel.insert(content)
             viewModel.editTrainer(trainer)
         } else {
-            val content = corpora.getGrammar(course.language)
+            val content = corpora.getGrammar(course.language, selectedContent)
             val trainer = corpora.getTrainer(content)
 
             contentViewModel.insert(content)

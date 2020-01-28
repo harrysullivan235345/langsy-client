@@ -24,6 +24,10 @@ class ContentViewModel(application: Application): AndroidViewModel(application) 
         return repository.fetchByLanguageAndStage(langCode, stage)
     }
 
+    fun fetchPrereq(langCode: String, line: Int): LiveData<List<Content>> {
+        return repository.fetchPrereq(langCode, line)
+    }
+
     fun insert(arg: Content) = viewModelScope.launch {
         repository.insert(arg)
     }

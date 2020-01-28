@@ -1,10 +1,10 @@
 package ga.harrysullivan.langsy.constants
 
 object GrammarPartOfSpeech {
-    val PREREQS = "prereqs"
-    val POSITIVE = "positive"
-    val NEGATIVE = "negative"
-    val QUESTION = "question"
+    const val PREREQS = "prereqs"
+    const val POSITIVE = "positive"
+    const val NEGATIVE = "negative"
+    const val QUESTION = "question"
 
-    val ALL = listOf<String>(PREREQS, POSITIVE, NEGATIVE, QUESTION)
+    val ALL = listOf<String>(POSITIVE, NEGATIVE, QUESTION)
 }

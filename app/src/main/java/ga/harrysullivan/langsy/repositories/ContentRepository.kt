@@ -11,6 +11,10 @@ class ContentRepository(private val contentDao: ContentDao) {
         return contentDao.fetchByLanguageAndStage(langCode, stage)
     }
 
+    fun fetchPrereq(langCode: String, line: Int): LiveData<List<Content>> {
+        return contentDao.fetchPrereq(langCode, line)
+    }
+
     suspend fun insert(arg: Content) {
         contentDao.insert(arg)
     }
