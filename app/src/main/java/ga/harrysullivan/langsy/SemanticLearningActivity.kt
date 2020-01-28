@@ -9,10 +9,8 @@ import ga.harrysullivan.langsy.adapters.RevealPanelAdapter
 import ga.harrysullivan.langsy.utils.InjectorUtils
 import ga.harrysullivan.langsy.utils.observeOnce
 import ga.harrysullivan.langsy.view_models.TrainerViewModel
-import kotlinx.android.synthetic.main.activity_assessment.*
 import kotlinx.android.synthetic.main.activity_semantic_learning.*
-import kotlinx.android.synthetic.main.activity_semantic_learning.semantic_learning_reveal
-import kotlinx.android.synthetic.main.activity_visual_learning.*
+import net.gcardone.junidecode.Junidecode.unidecode
 
 class SemanticLearningActivity : AppCompatActivity() {
 
@@ -22,7 +20,7 @@ class SemanticLearningActivity : AppCompatActivity() {
 
         val revealPanelAdapter = RevealPanelAdapter(this.layoutInflater, semantic_learning_root)
 
-        semantic_learning_reveal.setOnClickListener{
+        semantic_learning_reveal.setOnClickListener {
             revealPanelAdapter.show()
         }
 
@@ -38,7 +36,7 @@ class SemanticLearningActivity : AppCompatActivity() {
 
         viewModel.getTrainer().observeOnce(this, Observer {
             semantic_learning_content.text = it.content
-            revealPanelAdapter.setContent(it.translation)
+            revealPanelAdapter.setContent(it.translation, unidecode(it.translation))
         })
     }
 }

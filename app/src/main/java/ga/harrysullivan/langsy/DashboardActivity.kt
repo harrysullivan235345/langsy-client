@@ -48,7 +48,6 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun courseSelectCallback(course: Course) {
-        Log.d("WTF IS THIS", "Getting called again")
         mContentViewModel.fetchByLanguageAndStage(course.language, SpacedRepetition.THRESHOLD_OF_PROBABALISTIC_MASTERY).observeOnce(this, Observer {
             if(it.size > SpacedRepetition.WORKING_MEMORY_CAPACITY) {
 
@@ -95,7 +94,7 @@ class DashboardActivity : AppCompatActivity() {
             val trainer = Corpora(this.application).getTrainer(content)
             mTrainerViewModel.editTrainer(trainer)
 
-            val intent = Intent(this@DashboardActivity, SemanticLearningActivity::class.java)
+            val intent = Intent(this@DashboardActivity, AssessmentActivity::class.java)
             startActivity(intent)
         })
 

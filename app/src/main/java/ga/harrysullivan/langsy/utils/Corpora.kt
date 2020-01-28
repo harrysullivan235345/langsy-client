@@ -43,7 +43,11 @@ class Corpora(application: Application) {
             val translationFilename = "corpora/language-content/${content.partOfSpeech}/translations/${content.language}.txt"
             val translation = readFile(translationFilename).split('\n')
 
-            return Trainer(vocab[content.line], translation[content.line])
+            return Trainer(
+                vocab[content.line],
+                translation[content.line],
+                content
+            )
 
         } else {
 
@@ -53,7 +57,11 @@ class Corpora(application: Application) {
             val translationFilename = "corpora/language-content/grammar/${content.partOfSpeech}/${content.language}.txt"
             val translation = readFile(translationFilename).split('\n')
 
-            return Trainer(grammar[content.line].split(",")[0], translation[content.line])
+            return Trainer(
+                grammar[content.line].split(",")[0],
+                translation[content.line],
+                content
+            )
 
         }
 

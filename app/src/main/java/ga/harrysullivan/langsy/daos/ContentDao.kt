@@ -17,6 +17,9 @@ public interface ContentDao {
     @Query("select * from Content where language = :langCode and stage <= '${SpacedRepetition.THRESHOLD_OF_PROBABALISTIC_MASTERY}' order by stage limit 1")
     fun fetchPractice(langCode: String): LiveData<Content>
 
+    @Query("update Content set stage = stage + :amt where uid = :uid")
+    fun addToStage(uid: Int, amt: Int)
+
     @Insert
     suspend fun insert(arg: Content)
 

@@ -21,9 +21,9 @@ class RevealPanelAdapter(inflater: LayoutInflater, parent: ViewGroup) {
         parent.addView(mPanel)
     }
 
-    fun setContent(content: String) {
-        mPanel.findViewById<TextView>(R.id.big_text).text = content
-        mPanel.findViewById<TextView>(R.id.small_text).text = unidecode(content)
+    fun setContent(big: String, small: String) {
+        mPanel.findViewById<TextView>(R.id.big_text).text = big
+        mPanel.findViewById<TextView>(R.id.small_text).text = small
     }
 
     fun show() {

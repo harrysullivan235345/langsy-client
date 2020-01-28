@@ -12,6 +12,7 @@ import ga.harrysullivan.langsy.view_models.TrainerViewModel
 import kotlinx.android.synthetic.main.activity_application_learning.*
 import kotlinx.android.synthetic.main.activity_semantic_learning.*
 import kotlinx.android.synthetic.main.activity_visual_learning.*
+import net.gcardone.junidecode.Junidecode.unidecode
 
 class ApplicationLearningActivity : AppCompatActivity() {
 
@@ -37,7 +38,7 @@ class ApplicationLearningActivity : AppCompatActivity() {
 
         viewModel.getTrainer().observeOnce(this, Observer {
             application_learning_translation.text = it.translation
-            revealPanelAdapter.setContent(it.content)
+            revealPanelAdapter.setContent(it.content, unidecode(it.translation))
         })
     }
 }

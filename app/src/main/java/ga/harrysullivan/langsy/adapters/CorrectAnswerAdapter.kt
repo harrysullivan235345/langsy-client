@@ -17,6 +17,10 @@ class CorrectAnswerAdapter(inflater: LayoutInflater, parent: ViewGroup) {
         parent.addView(mPanel)
     }
 
+    fun setContent(translation: String) {
+        mPanel.findViewById<TextView>(R.id.correct_answer_panel_translation).text = translation
+    }
+
     fun show() {
         mPanel.visibility = View.VISIBLE
     }
