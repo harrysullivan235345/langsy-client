@@ -30,7 +30,7 @@ class Corpora(application: Application) {
 
     fun getLineOfPrereq(searchPrereq: String): Int {
         val filename = "corpora/language-content/grammar/prereqs.csv"
-        val prereqs = readFile(filename).split("\n")
+        val prereqs = readFile(filename).split("\n").map { p -> p.replace("\r", "") }
         return prereqs.indexOf("$searchPrereq,")
     }
 
@@ -77,7 +77,7 @@ class Corpora(application: Application) {
         val grammar = readFile(grammarFilename).split('\n')
 
         val lineNumber = Random.int(grammar.size)
-        val prereq = grammar[lineNumber].split(",")[1]
+        val prereq = grammar[lineNumber].split(",")[1].replace("\r", "")
         val prereqLineNumber = getLineOfPrereq(prereq)
         val prereqDone = selectedContent.find { content ->
             content.partOfSpeech == GrammarPartOfSpeech.PREREQS &&
