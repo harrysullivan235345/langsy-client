@@ -2,6 +2,7 @@ package ga.harrysullivan.langsy.view_models
 
 import androidx.lifecycle.ViewModel
 import ga.harrysullivan.langsy.data.Trainer
+import ga.harrysullivan.langsy.models.Course
 import ga.harrysullivan.langsy.repositories.TrainerRepository
 
 class TrainerViewModel(private val trainerRepository: TrainerRepository): ViewModel() {

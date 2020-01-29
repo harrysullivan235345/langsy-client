@@ -11,6 +11,7 @@ import ga.harrysullivan.langsy.adapters.CourseListAdapter
 import ga.harrysullivan.langsy.constants.ContentType
 import ga.harrysullivan.langsy.constants.SpacedRepetition
 import ga.harrysullivan.langsy.controllers.Engine
+import ga.harrysullivan.langsy.data.CurrentCourse
 import ga.harrysullivan.langsy.models.Content
 import ga.harrysullivan.langsy.models.Course
 import ga.harrysullivan.langsy.utils.Corpora
@@ -18,6 +19,7 @@ import ga.harrysullivan.langsy.utils.InjectorUtils
 import ga.harrysullivan.langsy.utils.observeOnce
 import ga.harrysullivan.langsy.view_models.ContentViewModel
 import ga.harrysullivan.langsy.view_models.CourseViewModel
+import ga.harrysullivan.langsy.view_models.CurrentCourseViewModel
 import ga.harrysullivan.langsy.view_models.TrainerViewModel
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
@@ -26,6 +28,7 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var mCourseViewModel: CourseViewModel
     private lateinit var mContentViewModel: ContentViewModel
     private lateinit var mTrainerViewModel: TrainerViewModel
+    private lateinit var mCurrentCourseViewModel: CurrentCourseViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +43,10 @@ class DashboardActivity : AppCompatActivity() {
         mTrainerViewModel = ViewModelProviders.of(this, trainerFactory)
             .get(TrainerViewModel::class.java)
 
+        val currentCourseFactory = InjectorUtils.provideCurrentCourseViewModelFactory()
+        mCurrentCourseViewModel = ViewModelProviders.of(this, currentCourseFactory)
+            .get(CurrentCourseViewModel::class.java)
+
         mCourseViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(CourseViewModel::class.java)
         mContentViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(ContentViewModel::class.java)
 
@@ -49,8 +56,12 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun courseSelectCallback(course: Course) {
+        mCurrentCourseViewModel.setCurrentCourse(
+            CurrentCourse(course)
+        )
         mContentViewModel.fetchByLanguageAndStage(course.language, SpacedRepetition.THRESHOLD_OF_PROBABALISTIC_MASTERY).observeOnce(this, Observer {
-            if(it.size > SpacedRepetition.WORKING_MEMORY_CAPACITY) {
+            val shouldGetNew = Engine.shouldDoNew(it)
+            if(shouldGetNew) {
 
                 practice(it)
 
@@ -66,25 +77,9 @@ class DashboardActivity : AppCompatActivity() {
         selectedContent: List<Content>,
         course: Course
     ) {
-        val totalGrammar = selectedContent.takeIf { it.isNotEmpty() }?.fold(0) { acc, content ->
-            if (content.type == ContentType.GRAMMAR) acc + 1 else acc
-        } ?: 0
-
-        val corpora = Corpora(this.application)
-
-        if (totalGrammar > SpacedRepetition.MAX_GRAMMAR) {
-            val content = corpora.getVocab(course.language)
-            val trainer = corpora.getTrainer(content)
-
-            mContentViewModel.insert(content)
-            mTrainerViewModel.editTrainer(trainer)
-        } else {
-            val content = corpora.getGrammar(course.language, selectedContent)
-            val trainer = corpora.getTrainer(content)
-
-            mContentViewModel.insert(content)
-            mTrainerViewModel.editTrainer(trainer)
-        }
+        val (content, trainer) = Engine.newContent(selectedContent, this.application, course)
+        mContentViewModel.insert(content)
+        mTrainerViewModel.editTrainer(trainer)
 
         val intent = Intent(this@DashboardActivity, VisualLearningActivity::class.java)
         startActivity(intent)

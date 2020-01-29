@@ -13,9 +13,12 @@ import ga.harrysullivan.langsy.adapters.CorrectAnswerAdapter
 import ga.harrysullivan.langsy.adapters.RevealPanelAdapter
 import ga.harrysullivan.langsy.adapters.SpontaneousRecallAdapter
 import ga.harrysullivan.langsy.constants.SpacedRepetition
+import ga.harrysullivan.langsy.controllers.Engine
+import ga.harrysullivan.langsy.data.Trainer
 import ga.harrysullivan.langsy.utils.InjectorUtils
 import ga.harrysullivan.langsy.utils.observeOnce
 import ga.harrysullivan.langsy.view_models.ContentViewModel
+import ga.harrysullivan.langsy.view_models.CurrentCourseViewModel
 import ga.harrysullivan.langsy.view_models.TrainerViewModel
 import kotlinx.android.synthetic.main.activity_assessment.*
 import kotlinx.android.synthetic.main.activity_semantic_learning.*
@@ -26,6 +29,9 @@ import net.gcardone.junidecode.Junidecode.unidecode
 class AssessmentActivity : AppCompatActivity() {
 
     private lateinit var mContentViewModel: ContentViewModel
+    private lateinit var mCorrectAnswerAdapter: CorrectAnswerAdapter
+    private lateinit var mTrainerViewModel: TrainerViewModel
+    private lateinit var mCurrentCourseViewModel: CurrentCourseViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,9 +46,9 @@ class AssessmentActivity : AppCompatActivity() {
 
         var dirty = false
 
-        val correctAnswerAdapter = CorrectAnswerAdapter(this.layoutInflater, assessment_root)
+        mCorrectAnswerAdapter = CorrectAnswerAdapter(this.layoutInflater, assessment_root)
         assessment_next_button.setOnClickListener {
-            correctAnswerAdapter.show()
+            mCorrectAnswerAdapter.show()
         }
 
 //        val spontaneousRecallAdapter = SpontaneousRecallAdapter(this.layoutInflater, assessment_root)
@@ -51,14 +57,18 @@ class AssessmentActivity : AppCompatActivity() {
 //        }, 3000)
 
         val trainerFactory = InjectorUtils.provideTrainerViewModelFactory()
-        val viewModel = ViewModelProviders.of(this, trainerFactory)
+        mTrainerViewModel = ViewModelProviders.of(this, trainerFactory)
             .get(TrainerViewModel::class.java)
 
-        viewModel.getTrainer().observeOnce(this, Observer {trainer ->
+        val currentCourseFactory = InjectorUtils.provideCurrentCourseViewModelFactory()
+        mCurrentCourseViewModel = ViewModelProviders.of(this, currentCourseFactory)
+            .get(CurrentCourseViewModel::class.java)
+
+        mTrainerViewModel.getTrainer().observeOnce(this, Observer {trainer ->
             assessment_content.text = trainer.content
             assessment_stage.text = toPct(trainer.contentObj.stage.toDouble() / SpacedRepetition.THRESHOLD_OF_MASTERY.toDouble())
             revealPanelAdapter.setContent(trainer.translation, unidecode(trainer.translation))
-            correctAnswerAdapter.setContent(trainer.translation)
+            mCorrectAnswerAdapter.setContent(trainer.translation)
 
             mContentViewModel.setLastReviewed(trainer.contentObj.uid, System.currentTimeMillis()/1000)
 
@@ -66,22 +76,55 @@ class AssessmentActivity : AppCompatActivity() {
                 val userInput = assessment_edit_text.text.toString().toLowerCase()
                 if (userInput == trainer.translation.toLowerCase()) {
                     if (dirty) {
-                        correctAnswerAdapter.show()
+                        mCorrectAnswerAdapter.show()
+                        setCallbackWrong()
                     } else {
                         mContentViewModel.addToStage(trainer.contentObj.uid, 1)
-                        correctAnswerAdapter.show()
+                        setCallbackRight(trainer)
+                        mCorrectAnswerAdapter.show()
                     }
 
                 } else {
                     revealPanelAdapter.show()
-                    correctAnswerAdapter.setCallback(View.OnClickListener {
-                        val intent =
-                            Intent(this@AssessmentActivity, VisualLearningActivity::class.java)
-                        startActivity(intent)
-                    })
                     dirty = true
                 }
             }
+        })
+    }
+
+    private fun setCallbackWrong() {
+        mCorrectAnswerAdapter.setCallback(View.OnClickListener {
+            val intent =
+                Intent(this@AssessmentActivity, VisualLearningActivity::class.java)
+            startActivity(intent)
+        })
+    }
+
+    private fun setCallbackRight(trainer: Trainer) {
+        mCorrectAnswerAdapter.setCallback(View.OnClickListener {
+            mContentViewModel.fetchByLanguageAndStage(trainer.contentObj.language, SpacedRepetition.THRESHOLD_OF_PROBABALISTIC_MASTERY).observeOnce(this, Observer { selectedContent ->
+                semantic_learning_next_button.setOnClickListener {
+                    val shouldGetNew = Engine.shouldDoNew(selectedContent)
+                    if (shouldGetNew) {
+                        mCurrentCourseViewModel.getCurrentCourse().observeOnce(this, Observer {currentCourse ->
+                            val (content, trainer) = Engine.newContent(selectedContent, this.application, currentCourse.course)
+                            mContentViewModel.insert(content)
+                            mTrainerViewModel.editTrainer(trainer)
+
+                            val intent = Intent(this@AssessmentActivity, VisualLearningActivity::class.java)
+                            startActivity(intent)
+                        })
+                    } else {
+                        val trainer = Engine.practice(selectedContent, this.application)
+
+                        mTrainerViewModel.editTrainer(trainer)
+                        val intent =
+                            Intent(this@AssessmentActivity, AssessmentActivity::class.java)
+                        startActivity(intent)
+                    }
+
+                }
+            })
         })
     }
 
