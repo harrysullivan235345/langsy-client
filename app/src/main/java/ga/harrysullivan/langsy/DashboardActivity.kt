@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import ga.harrysullivan.langsy.adapters.CourseListAdapter
 import ga.harrysullivan.langsy.constants.ContentType
 import ga.harrysullivan.langsy.constants.SpacedRepetition
+import ga.harrysullivan.langsy.controllers.Engine
 import ga.harrysullivan.langsy.models.Content
 import ga.harrysullivan.langsy.models.Course
 import ga.harrysullivan.langsy.utils.Corpora
@@ -51,7 +52,7 @@ class DashboardActivity : AppCompatActivity() {
         mContentViewModel.fetchByLanguageAndStage(course.language, SpacedRepetition.THRESHOLD_OF_PROBABALISTIC_MASTERY).observeOnce(this, Observer {
             if(it.size > SpacedRepetition.WORKING_MEMORY_CAPACITY) {
 
-                practice(it, course)
+                practice(it)
 
             } else {
 
@@ -89,22 +90,12 @@ class DashboardActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun practice(selectedContent: List<Content>,
-                         course: Course) {
-//        mContentViewModel.fetchPractice(course.language).observeOnce(this, Observer { content ->
-//            val trainer = Corpora(this.application).getTrainer(content)
-//            mTrainerViewModel.editTrainer(trainer)
-//
-//            val intent = Intent(this@DashboardActivity, AssessmentActivity::class.java)
-//            startActivity(intent)
-//        })
-
-        val sorted = selectedContent.sortedBy { it.lastReviewed + SpacedRepetition.STAGES[it.stage-1] }
-        val content = sorted.first()
-        val trainer = Corpora(this.application).getTrainer(content)
+    private fun practice(selectedContent: List<Content>) {
+        val trainer = Engine.practice(selectedContent, this.application)
         mTrainerViewModel.editTrainer(trainer)
 
         val intent = Intent(this@DashboardActivity, AssessmentActivity::class.java)
         startActivity(intent)
     }
+
 }
