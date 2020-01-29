@@ -15,8 +15,12 @@ class ContentRepository(private val contentDao: ContentDao) {
         return contentDao.fetchPractice(langCode)
     }
 
-    fun addToStage(uid: Int, amt: Int) {
+    suspend fun addToStage(uid: Int, amt: Int) {
         contentDao.addToStage(uid, amt)
+    }
+
+    suspend fun setLastReviewed(uid: Int, time: Long) {
+        contentDao.setLastReviewed(uid, time)
     }
 
     suspend fun insert(arg: Content) {

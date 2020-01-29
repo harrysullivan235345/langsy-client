@@ -51,7 +51,7 @@ class DashboardActivity : AppCompatActivity() {
         mContentViewModel.fetchByLanguageAndStage(course.language, SpacedRepetition.THRESHOLD_OF_PROBABALISTIC_MASTERY).observeOnce(this, Observer {
             if(it.size > SpacedRepetition.WORKING_MEMORY_CAPACITY) {
 
-                practice(course)
+                practice(it, course)
 
             } else {
 
@@ -89,14 +89,22 @@ class DashboardActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun practice(course: Course) {
-        mContentViewModel.fetchPractice(course.language).observeOnce(this, Observer { content ->
-            val trainer = Corpora(this.application).getTrainer(content)
-            mTrainerViewModel.editTrainer(trainer)
+    private fun practice(selectedContent: List<Content>,
+                         course: Course) {
+//        mContentViewModel.fetchPractice(course.language).observeOnce(this, Observer { content ->
+//            val trainer = Corpora(this.application).getTrainer(content)
+//            mTrainerViewModel.editTrainer(trainer)
+//
+//            val intent = Intent(this@DashboardActivity, AssessmentActivity::class.java)
+//            startActivity(intent)
+//        })
 
-            val intent = Intent(this@DashboardActivity, AssessmentActivity::class.java)
-            startActivity(intent)
-        })
+        val sorted = selectedContent.sortedBy { it.lastReviewed + SpacedRepetition.STAGES[it.stage-1] }
+        val content = sorted.first()
+        val trainer = Corpora(this.application).getTrainer(content)
+        mTrainerViewModel.editTrainer(trainer)
 
+        val intent = Intent(this@DashboardActivity, AssessmentActivity::class.java)
+        startActivity(intent)
     }
 }

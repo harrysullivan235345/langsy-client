@@ -21,6 +21,10 @@ class CorrectAnswerAdapter(inflater: LayoutInflater, parent: ViewGroup) {
         mPanel.findViewById<TextView>(R.id.correct_answer_panel_translation).text = translation
     }
 
+    fun setCallback(onClickListener: View.OnClickListener) {
+        mPanel.findViewById<TextView>(R.id.correct_panel_hide).setOnClickListener(onClickListener)
+    }
+
     fun show() {
         mPanel.visibility = View.VISIBLE
     }

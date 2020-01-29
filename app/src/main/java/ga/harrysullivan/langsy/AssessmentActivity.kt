@@ -1,7 +1,9 @@
 package ga.harrysullivan.langsy
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.view.View
 import android.widget.Space
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -58,6 +60,8 @@ class AssessmentActivity : AppCompatActivity() {
             revealPanelAdapter.setContent(trainer.translation, unidecode(trainer.translation))
             correctAnswerAdapter.setContent(trainer.translation)
 
+            mContentViewModel.setLastReviewed(trainer.contentObj.uid, System.currentTimeMillis()/1000)
+
             assessment_next_button.setOnClickListener {
                 val userInput = assessment_edit_text.text.toString().toLowerCase()
                 if (userInput == trainer.translation.toLowerCase()) {
@@ -70,6 +74,11 @@ class AssessmentActivity : AppCompatActivity() {
 
                 } else {
                     revealPanelAdapter.show()
+                    correctAnswerAdapter.setCallback(View.OnClickListener {
+                        val intent =
+                            Intent(this@AssessmentActivity, VisualLearningActivity::class.java)
+                        startActivity(intent)
+                    })
                     dirty = true
                 }
             }

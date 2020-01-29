@@ -28,8 +28,12 @@ class ContentViewModel(application: Application): AndroidViewModel(application) 
         return repository.fetchPractice(langCode)
     }
 
-    fun addToStage(uid: Int, amt: Int) {
+    fun addToStage(uid: Int, amt: Int) = viewModelScope.launch {
         repository.addToStage(uid, amt)
+    }
+
+    fun setLastReviewed(uid: Int, time: Long) = viewModelScope.launch {
+        repository.setLastReviewed(uid, time)
     }
 
     fun insert(arg: Content) = viewModelScope.launch {

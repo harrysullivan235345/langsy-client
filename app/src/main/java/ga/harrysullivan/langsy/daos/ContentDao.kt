@@ -18,7 +18,10 @@ public interface ContentDao {
     fun fetchPractice(langCode: String): LiveData<Content>
 
     @Query("update Content set stage = stage + :amt where uid = :uid")
-    fun addToStage(uid: Int, amt: Int)
+    suspend fun addToStage(uid: Int, amt: Int)
+
+    @Query("update Content set lastReviewed = :time where uid = :uid")
+    suspend fun setLastReviewed(uid: Int, time: Long)
 
     @Insert
     suspend fun insert(arg: Content)
