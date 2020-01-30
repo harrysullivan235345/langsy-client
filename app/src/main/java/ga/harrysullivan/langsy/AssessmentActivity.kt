@@ -111,22 +111,22 @@ class AssessmentActivity : AppCompatActivity() {
                 if (shouldGetNew) {
                     mCurrentCourseViewModel.getCurrentCourse()
                         .observeOnce(this, Observer { currentCourse ->
-                            val (content, trainer) = Engine.newContent(
+                            val (content, engineTrainer) = Engine.newContent(
                                 selectedContent,
                                 this.application,
                                 currentCourse.course
                             )
                             mContentViewModel.insert(content)
-                            mTrainerViewModel.editTrainer(trainer)
+                            mTrainerViewModel.editTrainer(engineTrainer)
 
                             val intent =
                                 Intent(this@AssessmentActivity, VisualLearningActivity::class.java)
                             startActivity(intent)
                         })
                 } else {
-                    val trainer = Engine.practice(selectedContent, this.application)
+                    val engineTrainer = Engine.practice(selectedContent, this.application)
 
-                    mTrainerViewModel.editTrainer(trainer)
+                    mTrainerViewModel.editTrainer(engineTrainer)
                     val intent =
                         Intent(this@AssessmentActivity, AssessmentActivity::class.java)
                     startActivity(intent)
