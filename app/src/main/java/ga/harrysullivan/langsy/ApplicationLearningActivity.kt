@@ -27,9 +27,12 @@ class ApplicationLearningActivity : AppCompatActivity() {
         }
 
         application_learning_next_button.setOnClickListener {
-            val intent =
-                Intent(this@ApplicationLearningActivity, SemanticLearningActivity::class.java)
-            startActivity(intent)
+            val completed = validate()
+            if (completed) {
+                val intent =
+                    Intent(this@ApplicationLearningActivity, SemanticLearningActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         val trainerFactory = InjectorUtils.provideTrainerViewModelFactory()
@@ -40,5 +43,14 @@ class ApplicationLearningActivity : AppCompatActivity() {
             application_learning_translation.text = it.translation
             revealPanelAdapter.setContent(it.content, unidecode(it.translation))
         })
+    }
+
+    private fun validate(): Boolean {
+        val transliterationDone = application_learning_transliteration.text.isNotBlank()
+        val sentenceOneDone = application_learning_sentence_1.text.isNotBlank()
+        val sentenceTwoDone = application_learning_sentence_2.text.isNotBlank()
+        val sentenceThreeDone = application_learning_sentence_3.text.isNotBlank()
+
+        return transliterationDone && sentenceOneDone && sentenceTwoDone && sentenceThreeDone
     }
 }
