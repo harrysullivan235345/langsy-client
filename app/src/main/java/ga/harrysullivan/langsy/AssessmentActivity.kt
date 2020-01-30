@@ -68,7 +68,7 @@ class AssessmentActivity : AppCompatActivity() {
             mCorrectAnswerAdapter.setContent(trainer.translation)
 
             assessment_next_button.setOnClickListener {
-                val userInput = assessment_edit_text.text.toString().toLowerCase()
+                val userInput = assessment_edit_text.text.toString().toLowerCase().trim()
                 if (userInput == trainer.translation.toLowerCase()) {
 
                     mContentViewModel.setLastReviewed(
