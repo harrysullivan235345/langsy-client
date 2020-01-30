@@ -63,11 +63,11 @@ class DashboardActivity : AppCompatActivity() {
             val shouldGetNew = Engine.shouldDoNew(it)
             if(shouldGetNew) {
 
-                practice(it)
+                newContent(it, course)
 
             } else {
 
-                newContent(it, course)
+                practice(it)
 
             }
         })

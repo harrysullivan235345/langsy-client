@@ -1,6 +1,7 @@
 package ga.harrysullivan.langsy.controllers
 
 import android.app.Application
+import android.util.Log
 import ga.harrysullivan.langsy.constants.ContentType
 import ga.harrysullivan.langsy.constants.SpacedRepetition
 import ga.harrysullivan.langsy.data.Trainer
@@ -11,12 +12,24 @@ import ga.harrysullivan.langsy.utils.Corpora
 object Engine {
 
     fun shouldDoNew(selectedContent: List<Content>): Boolean {
-        return selectedContent.size > SpacedRepetition.WORKING_MEMORY_CAPACITY
+        val now = System.currentTimeMillis() / 1000
+        val overdue = selectedContent.filter { content ->
+            val stageIndex = stateToIndex(content.stage)
+            val nextTimeToReview = content.lastReviewed + SpacedRepetition.STAGES[stageIndex]
+            nextTimeToReview < now
+        }
+
+        val overdueEmpty = overdue.isEmpty()
+        val availableMemory = selectedContent.size < SpacedRepetition.WORKING_MEMORY_CAPACITY
+
+        return availableMemory || overdueEmpty
     }
 
-    fun newContent(selectedContent: List<Content>,
-                   application: Application,
-                   course: Course): Pair<Content, Trainer> {
+    fun newContent(
+        selectedContent: List<Content>,
+        application: Application,
+        course: Course
+    ): Pair<Content, Trainer> {
         val totalGrammar = selectedContent.takeIf { it.isNotEmpty() }?.fold(0) { acc, content ->
             if (content.type == ContentType.GRAMMAR) acc + 1 else acc
         } ?: 0
@@ -36,13 +49,21 @@ object Engine {
         }
     }
 
+    private fun stateToIndex(stage: Int): Int {
+        return if (stage == 0) {
+            0
+        } else {
+            stage - 1
+        }
+    }
+
     fun practice(
         selectedContent: List<Content>,
         application: Application
     ): Trainer {
 
         val sorted =
-            selectedContent.sortedBy { it.lastReviewed + SpacedRepetition.STAGES[it.stage - 1] }
+            selectedContent.sortedBy { it.lastReviewed + SpacedRepetition.STAGES[stateToIndex(it.stage)] }
         val content = sorted.first()
         val trainer = Corpora(application).getTrainer(content)
         return trainer
