@@ -16,14 +16,25 @@ import net.gcardone.junidecode.Junidecode.unidecode
 
 class ApplicationLearningActivity : AppCompatActivity() {
 
+    private lateinit var mRevealPanelAdapter: RevealPanelAdapter
+    private lateinit var mTrainerViewModel: TrainerViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_application_learning)
 
-        val revealPanelAdapter = RevealPanelAdapter(this.layoutInflater, application_learning_root)
+        mRevealPanelAdapter = RevealPanelAdapter(this.layoutInflater, application_learning_root)
 
+        val trainerFactory = InjectorUtils.provideTrainerViewModelFactory()
+        mTrainerViewModel = ViewModelProviders.of(this, trainerFactory)
+            .get(TrainerViewModel::class.java)
+
+        init()
+    }
+
+    private fun init() {
         application_learning_reveal.setOnClickListener{
-            revealPanelAdapter.show()
+            mRevealPanelAdapter.show()
         }
 
         application_learning_next_button.setOnClickListener {
@@ -35,13 +46,9 @@ class ApplicationLearningActivity : AppCompatActivity() {
             }
         }
 
-        val trainerFactory = InjectorUtils.provideTrainerViewModelFactory()
-        val viewModel = ViewModelProviders.of(this, trainerFactory)
-            .get(TrainerViewModel::class.java)
-
-        viewModel.getTrainer().observeOnce(this, Observer {
+        mTrainerViewModel.getTrainer().observeOnce(this, Observer {
             application_learning_translation.text = it.translation
-            revealPanelAdapter.setContent(it.content, unidecode(it.translation))
+            mRevealPanelAdapter.setContent(it.content, unidecode(it.translation))
         })
     }
 
