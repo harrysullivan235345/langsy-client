@@ -62,8 +62,8 @@ class AssessmentActivity : AppCompatActivity() {
 
         mTrainerViewModel.getTrainer().observeOnce(this, Observer { trainer ->
             assessment_content.text = trainer.content
-            assessment_stage.text =
-                toPct(trainer.contentObj.stage.toDouble() / SpacedRepetition.THRESHOLD_OF_MASTERY.toDouble())
+            val stage = trainer.contentObj.stage
+            setMastery(stage)
             revealPanelAdapter.setContent(trainer.translation, unidecode(trainer.translation))
             mCorrectAnswerAdapter.setContent(trainer.translation)
 
@@ -81,6 +81,7 @@ class AssessmentActivity : AppCompatActivity() {
                         setCallbackWrong()
                     } else {
                         mContentViewModel.addToStage(trainer.contentObj.uid, 1)
+                        setMastery(stage + 1)
                         setCallbackRight(trainer)
                         mCorrectAnswerAdapter.show()
                     }
@@ -91,6 +92,11 @@ class AssessmentActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    private fun setMastery(stage: Int) {
+        assessment_stage.text =
+            toPct(stage.toDouble() / SpacedRepetition.THRESHOLD_OF_MASTERY.toDouble())
     }
 
     private fun setCallbackWrong() {
