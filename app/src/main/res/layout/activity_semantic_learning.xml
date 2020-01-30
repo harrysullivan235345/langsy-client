@@ -97,7 +97,7 @@
             android:layout_weight="0.3">
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/semantic_learning_definition"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="42dp"
