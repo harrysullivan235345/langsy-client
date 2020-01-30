@@ -1,6 +1,7 @@
 package ga.harrysullivan.langsy
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,9 @@ import ga.harrysullivan.langsy.adapters.RevealPanelAdapter
 import ga.harrysullivan.langsy.constants.SpacedRepetition
 import ga.harrysullivan.langsy.controllers.Engine
 import ga.harrysullivan.langsy.data.Trainer
+import ga.harrysullivan.langsy.state.AssessmentDirtyState
+import ga.harrysullivan.langsy.state.TrainerState
+import ga.harrysullivan.langsy.stateData.AssessmentDirtyStateData
 import ga.harrysullivan.langsy.utils.InjectorUtils
 import ga.harrysullivan.langsy.utils.observeOnce
 import ga.harrysullivan.langsy.view_models.ContentViewModel
@@ -27,6 +31,7 @@ class AssessmentActivity : AppCompatActivity() {
     private lateinit var mCorrectAnswerAdapter: CorrectAnswerAdapter
     private lateinit var mTrainerViewModel: TrainerViewModel
     private lateinit var mCurrentCourseViewModel: CurrentCourseViewModel
+    private lateinit var mDirtyState: AssessmentDirtyState
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,13 +39,6 @@ class AssessmentActivity : AppCompatActivity() {
 
         mContentViewModel = ViewModelProvider.AndroidViewModelFactory(application)
             .create(ContentViewModel::class.java)
-
-        val revealPanelAdapter = RevealPanelAdapter(this.layoutInflater, assessment_root)
-        assessment_reveal.setOnClickListener {
-            revealPanelAdapter.show()
-        }
-
-        var dirty = false
 
         mCorrectAnswerAdapter = CorrectAnswerAdapter(this.layoutInflater, assessment_root)
         assessment_next_button.setOnClickListener {
@@ -60,6 +58,22 @@ class AssessmentActivity : AppCompatActivity() {
         mCurrentCourseViewModel = ViewModelProviders.of(this, currentCourseFactory)
             .get(CurrentCourseViewModel::class.java)
 
+        mDirtyState = ViewModelProviders.of(this).get(AssessmentDirtyState::class.java)
+
+        mDirtyState.data.value = AssessmentDirtyStateData(false)
+
+        mDirtyState.data.observe(this, Observer {
+            if (it.dirty) {
+                assessment_stage.setTextColor(Color.RED)
+            }
+        })
+
+        val revealPanelAdapter = RevealPanelAdapter(this.layoutInflater, assessment_root)
+        assessment_reveal.setOnClickListener {
+            mDirtyState.data.value = AssessmentDirtyStateData(true)
+            revealPanelAdapter.show()
+        }
+
         mTrainerViewModel.getTrainer().observeOnce(this, Observer { trainer ->
             assessment_content.text = trainer.content
             val stage = trainer.contentObj.stage
@@ -76,19 +90,21 @@ class AssessmentActivity : AppCompatActivity() {
                         System.currentTimeMillis() / 1000
                     )
 
-                    if (dirty) {
-                        mCorrectAnswerAdapter.show()
-                        setCallbackWrong()
-                    } else {
-                        mContentViewModel.addToStage(trainer.contentObj.uid, 1)
-                        setMastery(stage + 1)
-                        setCallbackRight(trainer)
-                        mCorrectAnswerAdapter.show()
-                    }
+                    mDirtyState.data.observeOnce(this, Observer { dirtyData ->
+                        if (dirtyData.dirty) {
+                            mCorrectAnswerAdapter.show()
+                            setCallbackWrong()
+                        } else {
+                            mContentViewModel.addToStage(trainer.contentObj.uid, 1)
+                            setMastery(stage + 1)
+                            setCallbackRight(trainer)
+                            mCorrectAnswerAdapter.show()
+                        }
+                    })
 
                 } else {
                     revealPanelAdapter.show()
-                    dirty = true
+                    mDirtyState.data.value = AssessmentDirtyStateData(true)
                 }
             }
         })
