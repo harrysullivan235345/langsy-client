@@ -22,6 +22,7 @@ import ga.harrysullivan.langsy.view_models.CourseViewModel
 import ga.harrysullivan.langsy.view_models.CurrentCourseViewModel
 import ga.harrysullivan.langsy.view_models.TrainerViewModel
 import kotlinx.android.synthetic.main.activity_dashboard.*
+import java.math.MathContext
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -52,7 +53,16 @@ class DashboardActivity : AppCompatActivity() {
 
         mCourseViewModel.allCourses.observeOnce(this, Observer { courses ->
             CourseListAdapter(this.layoutInflater, dashboard_courselist, courses, ::courseSelectCallback)
+            setCash(courses)
         })
+    }
+
+    private fun setCash(courses: List<Course>) {
+        val cash = courses.takeIf { it.isNotEmpty() }?.fold(0.0) { acc, course ->
+            acc + course.cash
+        } ?: 0.0
+        val fixedCash = cash.toInt()
+        dashboard_cash_label.text = "$$fixedCash"
     }
 
     private fun courseSelectCallback(course: Course) {
