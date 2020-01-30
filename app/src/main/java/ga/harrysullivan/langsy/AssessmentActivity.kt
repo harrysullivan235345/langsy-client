@@ -10,14 +10,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import ga.harrysullivan.langsy.adapters.CorrectAnswerAdapter
 import ga.harrysullivan.langsy.adapters.RevealPanelAdapter
+import ga.harrysullivan.langsy.constants.ReinforcementSchedule
 import ga.harrysullivan.langsy.constants.SpacedRepetition
 import ga.harrysullivan.langsy.controllers.Engine
+import ga.harrysullivan.langsy.data.CurrentCourse
 import ga.harrysullivan.langsy.data.Trainer
 import ga.harrysullivan.langsy.state.AssessmentDirtyState
 import ga.harrysullivan.langsy.stateData.AssessmentDirtyStateData
 import ga.harrysullivan.langsy.utils.InjectorUtils
 import ga.harrysullivan.langsy.utils.observeOnce
 import ga.harrysullivan.langsy.view_models.ContentViewModel
+import ga.harrysullivan.langsy.view_models.CourseViewModel
 import ga.harrysullivan.langsy.view_models.CurrentCourseViewModel
 import ga.harrysullivan.langsy.view_models.TrainerViewModel
 import kotlinx.android.synthetic.main.activity_assessment.*
@@ -27,6 +30,7 @@ import net.gcardone.junidecode.Junidecode.unidecode
 class AssessmentActivity : AppCompatActivity() {
 
     private lateinit var mContentViewModel: ContentViewModel
+    private lateinit var mCourseViewModel: CourseViewModel
     private lateinit var mCorrectAnswerAdapter: CorrectAnswerAdapter
     private lateinit var mTrainerViewModel: TrainerViewModel
     private lateinit var mCurrentCourseViewModel: CurrentCourseViewModel
@@ -38,6 +42,9 @@ class AssessmentActivity : AppCompatActivity() {
 
         mContentViewModel = ViewModelProvider.AndroidViewModelFactory(application)
             .create(ContentViewModel::class.java)
+
+        mCourseViewModel = ViewModelProvider.AndroidViewModelFactory(application)
+            .create(CourseViewModel::class.java)
 
         mCorrectAnswerAdapter = CorrectAnswerAdapter(this.layoutInflater, assessment_root)
         assessment_next_button.setOnClickListener {
@@ -56,6 +63,10 @@ class AssessmentActivity : AppCompatActivity() {
         val currentCourseFactory = InjectorUtils.provideCurrentCourseViewModelFactory()
         mCurrentCourseViewModel = ViewModelProviders.of(this, currentCourseFactory)
             .get(CurrentCourseViewModel::class.java)
+
+        mCurrentCourseViewModel.getCurrentCourse().observe(this, Observer {
+            assessment_cash.text = "$${it.course.cash.toInt()}"
+        })
 
         mDirtyState = ViewModelProviders.of(this).get(AssessmentDirtyState::class.java)
 
@@ -80,6 +91,7 @@ class AssessmentActivity : AppCompatActivity() {
             revealPanelAdapter.setContent(trainer.translation, unidecode(trainer.translation))
             mCorrectAnswerAdapter.setContent(trainer.translation)
 
+
             assessment_next_button.setOnClickListener {
                 val userInput = assessment_edit_text.text.toString().toLowerCase().trim()
                 if (userInput == trainer.translation.toLowerCase()) {
@@ -97,6 +109,14 @@ class AssessmentActivity : AppCompatActivity() {
                             mContentViewModel.addToStage(trainer.contentObj.uid, 1)
                             setMastery(stage + 1)
                             setCallbackRight(trainer)
+
+                            mCurrentCourseViewModel.getCurrentCourse().observeOnce(this, Observer { currentCourse ->
+                                val newCash = currentCourse.course.cash + ReinforcementSchedule.makeRightReward()
+                                val depositedCourse = currentCourse.course.copy(cash = newCash)
+                                mCourseViewModel.update(depositedCourse)
+                                mCurrentCourseViewModel.setCurrentCourse(CurrentCourse(depositedCourse))
+                            })
+
                             mCorrectAnswerAdapter.show()
                         }
                     })

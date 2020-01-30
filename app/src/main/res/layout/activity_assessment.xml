@@ -9,19 +9,30 @@
     tools:context=".AssessmentActivity">
 
     <TextView
+        android:id="@+id/assessment_cash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="$23"
+        android:textColor="@android:color/white"
+        app:fontFamily="@font/muli"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
         android:layout_marginLeft="1dp"
-        android:layout_marginTop="32dp"
         android:text="@string/assessment_learning_heading"
         android:textColor="@android:color/white"
         android:textSize="30sp"
         app:fontFamily="@font/muli"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/assessment_cash" />
 
     <TextView
         android:id="@+id/assessment_stage"
