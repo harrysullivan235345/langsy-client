@@ -14,7 +14,6 @@ import ga.harrysullivan.langsy.constants.SpacedRepetition
 import ga.harrysullivan.langsy.controllers.Engine
 import ga.harrysullivan.langsy.data.Trainer
 import ga.harrysullivan.langsy.state.AssessmentDirtyState
-import ga.harrysullivan.langsy.state.TrainerState
 import ga.harrysullivan.langsy.stateData.AssessmentDirtyStateData
 import ga.harrysullivan.langsy.utils.InjectorUtils
 import ga.harrysullivan.langsy.utils.observeOnce
