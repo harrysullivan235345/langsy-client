@@ -109,7 +109,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/application_learning_transliteration"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="42dp"
@@ -149,7 +149,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editText1"
+                android:id="@+id/application_learning_sentence_1"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="42dp"
@@ -189,7 +189,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/application_learning_sentence_2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="42dp"
@@ -229,7 +229,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/application_learning_sentence_3"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="42dp"
