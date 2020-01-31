@@ -55,19 +55,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/reveal_panel_report"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
-        android:background="@drawable/reveal_button"
-        android:clickable="true"
-        android:text="!"
-        android:textColor="@color/buttonText"
-        android:textSize="12sp"
-        app:fontFamily="@font/muli"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reveal_panel_hide" />
 </androidx.constraintlayout.widget.ConstraintLayout>
