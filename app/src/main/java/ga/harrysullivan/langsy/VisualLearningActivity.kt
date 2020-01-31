@@ -26,9 +26,11 @@ class VisualLearningActivity : AppCompatActivity() {
         val trainerFactory = InjectorUtils.provideTrainerViewModelFactory()
         mTrainerViewModel = ViewModelProviders.of(this, trainerFactory)
             .get(TrainerViewModel::class.java)
+
+        init()
     }
 
-    fun init() {
+    private fun init() {
         mTrainerViewModel.getTrainer().observeOnce(this, Observer {
             visual_learning_translation.text = it.translation
             mRevealPanelAdapter.setContent(it.content, unidecode(it.translation))
@@ -37,7 +39,7 @@ class VisualLearningActivity : AppCompatActivity() {
         setListeners()
     }
 
-    fun setListeners() {
+    private fun setListeners() {
         visual_learning_reveal.setOnClickListener {
             mRevealPanelAdapter.show()
         }
