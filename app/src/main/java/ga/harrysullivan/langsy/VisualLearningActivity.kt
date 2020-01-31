@@ -33,6 +33,8 @@ class VisualLearningActivity : AppCompatActivity() {
             visual_learning_translation.text = it.translation
             mRevealPanelAdapter.setContent(it.content, unidecode(it.translation))
         })
+
+        setListeners()
     }
 
     fun setListeners() {
