@@ -14,14 +14,30 @@ import net.gcardone.junidecode.Junidecode.unidecode
 
 class VisualLearningActivity : AppCompatActivity() {
 
+    private lateinit var mRevealPanelAdapter: RevealPanelAdapter
+    private lateinit var mTrainerViewModel: TrainerViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_visual_learning)
 
-        val revealPanelAdapter = RevealPanelAdapter(this.layoutInflater, visual_learning_root)
+        mRevealPanelAdapter = RevealPanelAdapter(this.layoutInflater, visual_learning_root)
 
+        val trainerFactory = InjectorUtils.provideTrainerViewModelFactory()
+        mTrainerViewModel = ViewModelProviders.of(this, trainerFactory)
+            .get(TrainerViewModel::class.java)
+    }
+
+    fun init() {
+        mTrainerViewModel.getTrainer().observeOnce(this, Observer {
+            visual_learning_translation.text = it.translation
+            mRevealPanelAdapter.setContent(it.content, unidecode(it.translation))
+        })
+    }
+
+    fun setListeners() {
         visual_learning_reveal.setOnClickListener {
-            revealPanelAdapter.show()
+            mRevealPanelAdapter.show()
         }
 
         visual_learning_next_button.setOnClickListener {
@@ -29,14 +45,5 @@ class VisualLearningActivity : AppCompatActivity() {
                 Intent(this@VisualLearningActivity, ApplicationLearningActivity::class.java)
             startActivity(intent)
         }
-
-        val trainerFactory = InjectorUtils.provideTrainerViewModelFactory()
-        val viewModel = ViewModelProviders.of(this, trainerFactory)
-            .get(TrainerViewModel::class.java)
-
-        viewModel.getTrainer().observeOnce(this, Observer {
-            visual_learning_translation.text = it.translation
-            revealPanelAdapter.setContent(it.content, unidecode(it.translation))
-        })
     }
 }
