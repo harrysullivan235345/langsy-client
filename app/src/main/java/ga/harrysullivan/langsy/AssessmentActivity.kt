@@ -3,6 +3,7 @@ package ga.harrysullivan.langsy
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -10,20 +11,20 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import ga.harrysullivan.langsy.adapters.CorrectAnswerAdapter
 import ga.harrysullivan.langsy.adapters.RevealPanelAdapter
+import ga.harrysullivan.langsy.adapters.SpontaneousRecallAdapter
 import ga.harrysullivan.langsy.constants.ReinforcementSchedule
 import ga.harrysullivan.langsy.constants.SpacedRepetition
 import ga.harrysullivan.langsy.controllers.Engine
 import ga.harrysullivan.langsy.data.CurrentCourse
+import ga.harrysullivan.langsy.data.Spontaneous
 import ga.harrysullivan.langsy.data.Trainer
 import ga.harrysullivan.langsy.models.Content
 import ga.harrysullivan.langsy.state.AssessmentDirtyState
 import ga.harrysullivan.langsy.stateData.AssessmentDirtyStateData
 import ga.harrysullivan.langsy.utils.InjectorUtils
 import ga.harrysullivan.langsy.utils.observeOnce
-import ga.harrysullivan.langsy.view_models.ContentViewModel
-import ga.harrysullivan.langsy.view_models.CourseViewModel
-import ga.harrysullivan.langsy.view_models.CurrentCourseViewModel
-import ga.harrysullivan.langsy.view_models.TrainerViewModel
+import ga.harrysullivan.langsy.utils.observeSingle
+import ga.harrysullivan.langsy.view_models.*
 import kotlinx.android.synthetic.main.activity_assessment.*
 import net.gcardone.junidecode.Junidecode.unidecode
 
@@ -37,6 +38,8 @@ class AssessmentActivity : AppCompatActivity() {
     private lateinit var mCurrentCourseViewModel: CurrentCourseViewModel
     private lateinit var mDirtyState: AssessmentDirtyState
     private lateinit var mRevealPanelAdapter: RevealPanelAdapter
+    private lateinit var mSpontaneousViewModel: SpontaneousViewModel
+    private lateinit var mSpontaneousRecallAdapter: SpontaneousRecallAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,11 +53,6 @@ class AssessmentActivity : AppCompatActivity() {
 
         mCorrectAnswerAdapter = CorrectAnswerAdapter(this.layoutInflater, assessment_root)
 
-//        val spontaneousRecallAdapter = SpontaneousRecallAdapter(this.layoutInflater, assessment_root)
-//        Handler().postDelayed({
-//            spontaneousRecallAdapter.show()
-//        }, 3000)
-
         val trainerFactory = InjectorUtils.provideTrainerViewModelFactory()
         mTrainerViewModel = ViewModelProviders.of(this, trainerFactory)
             .get(TrainerViewModel::class.java)
@@ -63,9 +61,14 @@ class AssessmentActivity : AppCompatActivity() {
         mCurrentCourseViewModel = ViewModelProviders.of(this, currentCourseFactory)
             .get(CurrentCourseViewModel::class.java)
 
+        val spontaneousFactory = InjectorUtils.provideSpontaneousViewModelFactory()
+        mSpontaneousViewModel = ViewModelProviders.of(this, spontaneousFactory)
+            .get(SpontaneousViewModel::class.java)
+
         mDirtyState = ViewModelProviders.of(this).get(AssessmentDirtyState::class.java)
 
         mRevealPanelAdapter = RevealPanelAdapter(this.layoutInflater, assessment_root)
+        mSpontaneousRecallAdapter = SpontaneousRecallAdapter(this.layoutInflater, assessment_root)
 
         init()
     }
@@ -98,7 +101,22 @@ class AssessmentActivity : AppCompatActivity() {
             }
         })
 
+        var observedSpontaneous = false
+        mSpontaneousViewModel.getSpontaneous().observeOnce(this, Observer {
+            if (it.active && !observedSpontaneous) {
+                mSpontaneousRecallAdapter.setContent(it.content)
+
+                Handler().postDelayed(::showSpontaneous, 5000)
+            }
+            observedSpontaneous = true
+        })
+
         setListeners()
+    }
+
+    private fun showSpontaneous() {
+        mSpontaneousRecallAdapter.show()
+        mSpontaneousViewModel.setSpontaneous(Spontaneous("", false))
     }
 
     private fun setListeners() {
@@ -130,7 +148,7 @@ class AssessmentActivity : AppCompatActivity() {
             mDirtyState.data.observeOnce(this, Observer { dirtyData ->
                 if (dirtyData.dirty) {
                     mCorrectAnswerAdapter.show()
-                    setCallbackWrong()
+                    setCallbackWrong(trainer)
                 } else {
                     gotRightFirstTry(trainer, stage)
                 }
@@ -172,6 +190,8 @@ class AssessmentActivity : AppCompatActivity() {
                     mContentViewModel.insert(content)
                     mTrainerViewModel.editTrainer(engineTrainer)
 
+                    clearSpontaneous()
+
                     val intent =
                         Intent(this@AssessmentActivity, VisualLearningActivity::class.java)
                     startActivity(intent)
@@ -180,14 +200,19 @@ class AssessmentActivity : AppCompatActivity() {
             val engineTrainer = Engine.practice(selectedContent, this.application)
 
             mTrainerViewModel.editTrainer(engineTrainer)
+            clearSpontaneous()
             val intent =
                 Intent(this@AssessmentActivity, AssessmentActivity::class.java)
             startActivity(intent)
         }
     }
 
-    private fun setCallbackWrong() {
+    private fun setCallbackWrong(trainer: Trainer) {
+        if (trainer.contentObj.stage == 0) {
+            mSpontaneousViewModel.setSpontaneous(Spontaneous(trainer.translation, true))
+        }
         mCorrectAnswerAdapter.setCallback(View.OnClickListener {
+            clearSpontaneous()
             val intent =
                 Intent(this@AssessmentActivity, VisualLearningActivity::class.java)
             startActivity(intent)
@@ -204,6 +229,10 @@ class AssessmentActivity : AppCompatActivity() {
 
             })
         })
+    }
+
+    private fun clearSpontaneous() {
+        Handler().removeCallbacks(::showSpontaneous)
     }
 
     private fun setMastery(stage: Int) {
