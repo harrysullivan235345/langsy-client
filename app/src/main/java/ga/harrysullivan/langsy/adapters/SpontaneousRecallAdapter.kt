@@ -21,6 +21,10 @@ class SpontaneousRecallAdapter(inflater: LayoutInflater, parent: ViewGroup) {
         parent.addView(mPanel)
     }
 
+    fun setContent(content: String) {
+        mPanel.findViewById<TextView>(R.id.assessment_home_button).text = content
+    }
+
     fun show() {
         mPanel.visibility = View.VISIBLE
     }
