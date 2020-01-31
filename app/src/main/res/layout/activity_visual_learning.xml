@@ -48,7 +48,7 @@
         android:background="@drawable/home_button_sm"
         android:clickable="true"
         android:text="&lt;-"
-        android:textColor="@color/buttonText"
+        android:textColor="@android:color/white"
         android:textSize="12sp"
         app:fontFamily="sans-serif-light"
         app:layout_constraintStart_toStartOf="parent"
