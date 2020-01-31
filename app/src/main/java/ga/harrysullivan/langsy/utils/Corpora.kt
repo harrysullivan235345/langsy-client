@@ -89,13 +89,21 @@ class Corpora(application: Application) {
         return same || vocabInTranslation || translationInVocab
     }
 
-    fun getVocab(langCode: String): Content {
+    fun getVocab(langCode: String, selectedContent: List<Content>): Content {
         val pos = Random.choose(VocabPartOfSpeech.ALL)
 
         val vocabFilename = "corpora/language-content/$pos/words.txt"
         val vocab = readFile(vocabFilename).split('\n')
 
-        val lineNumber = Random.int(vocab.size - 1)
+        var lineNumber = 0
+        var found = false
+        do {
+            lineNumber = Random.int(vocab.size - 1)
+            val doneLineNumbers = selectedContent.filter { it.partOfSpeech == pos && it.line == lineNumber }.map { it.line }
+            if (doneLineNumbers.indexOf(lineNumber) == -1) {
+                found = true
+            }
+        } while (!found)
 
         return Content(0, 0, ContentType.VOCAB, lineNumber, 0, langCode, pos)
     }
@@ -106,7 +114,16 @@ class Corpora(application: Application) {
         val grammarFilename = "corpora/language-content/grammar/$pos.csv"
         val grammar = readFile(grammarFilename).split('\n')
 
-        val lineNumber = Random.int(grammar.size)
+        var lineNumber = 0
+        var found = false
+        do {
+            lineNumber = Random.int(grammar.size)
+            val doneLineNumbers = selectedContent.filter { it.partOfSpeech == pos && it.line == lineNumber }.map { it.line }
+            if (doneLineNumbers.indexOf(lineNumber) == -1) {
+                found = true
+            }
+        } while (!found)
+
         val prereq = grammar[lineNumber].split(",")[1].replace("\r", "")
         val prereqLineNumber = getLineOfPrereq(prereq)
         val prereqDone = selectedContent.find { content ->

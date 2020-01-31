@@ -37,7 +37,7 @@ object Engine {
         val corpora = Corpora(application)
 
         if (totalGrammar > SpacedRepetition.MAX_GRAMMAR) {
-            val content = corpora.getVocab(course.language)
+            val content = corpora.getVocab(course.language, selectedContent)
             val trainer = corpora.getTrainer(content)
 
             return Pair(content, trainer)
