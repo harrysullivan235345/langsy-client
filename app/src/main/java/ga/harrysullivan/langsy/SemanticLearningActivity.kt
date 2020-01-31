@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import ga.harrysullivan.langsy.adapters.RevealPanelAdapter
 import ga.harrysullivan.langsy.constants.SpacedRepetition
 import ga.harrysullivan.langsy.controllers.Engine
+import ga.harrysullivan.langsy.models.Content
 import ga.harrysullivan.langsy.utils.InjectorUtils
 import ga.harrysullivan.langsy.utils.observeOnce
 import ga.harrysullivan.langsy.view_models.ContentViewModel
@@ -20,6 +21,7 @@ class SemanticLearningActivity : AppCompatActivity() {
 
     private lateinit var mContentViewModel: ContentViewModel
     private lateinit var mTrainerViewModel: TrainerViewModel
+    private lateinit var revealPanelAdapter: RevealPanelAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,28 +34,39 @@ class SemanticLearningActivity : AppCompatActivity() {
         mContentViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(
             ContentViewModel::class.java)
 
-        val revealPanelAdapter = RevealPanelAdapter(this.layoutInflater, semantic_learning_root)
+        revealPanelAdapter = RevealPanelAdapter(this.layoutInflater, semantic_learning_root)
 
-        semantic_learning_reveal.setOnClickListener {
-            revealPanelAdapter.show()
-        }
+        init()
+    }
 
-
+    private fun init() {
         mTrainerViewModel.getTrainer().observeOnce(this, Observer {trainer ->
             semantic_learning_content.text = trainer.content
             revealPanelAdapter.setContent(trainer.translation, unidecode(trainer.translation))
 
             mContentViewModel.fetchByLanguageAndStage(trainer.contentObj.language, SpacedRepetition.THRESHOLD_OF_PROBABALISTIC_MASTERY).observeOnce(this, Observer { selectedContent ->
-                semantic_learning_next_button.setOnClickListener {
-
-                    val trainer = Engine.practice(selectedContent, this.application)
-
-                    mTrainerViewModel.editTrainer(trainer)
-                    val intent =
-                        Intent(this@SemanticLearningActivity, AssessmentActivity::class.java)
-                    startActivity(intent)
-                }
+                prepareLoadAssessment(selectedContent)
             })
         })
+
+        setListeners()
+    }
+
+    private fun prepareLoadAssessment(selectedContent: List<Content>) {
+        semantic_learning_next_button.setOnClickListener {
+
+            val trainer = Engine.practice(selectedContent, this.application)
+
+            mTrainerViewModel.editTrainer(trainer)
+            val intent =
+                Intent(this@SemanticLearningActivity, AssessmentActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun setListeners() {
+        semantic_learning_reveal.setOnClickListener {
+            revealPanelAdapter.show()
+        }
     }
 }
