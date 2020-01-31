@@ -7,9 +7,6 @@ import ga.harrysullivan.langsy.constants.SpacedRepetition
 import ga.harrysullivan.langsy.constants.VocabPartOfSpeech
 import ga.harrysullivan.langsy.data.Trainer
 import ga.harrysullivan.langsy.models.Content
-import ga.harrysullivan.langsy.models.Course
-import ga.harrysullivan.langsy.view_models.ContentViewModel
-import java.util.*
 
 class Corpora(application: Application) {
     private val mApplication: Application
@@ -37,24 +34,39 @@ class Corpora(application: Application) {
     fun getTrainer(content: Content): Trainer {
         if (content.type == ContentType.VOCAB) {
 
-            val vocabFilename = "corpora/language-content/${content.partOfSpeech}/words.txt"
-            val vocab = readFile(vocabFilename).split('\n')
+            var found = false
+            var trainer: Trainer
 
-            val translationFilename = "corpora/language-content/${content.partOfSpeech}/translations/${content.language}.txt"
-            val translation = readFile(translationFilename).split('\n')
+            do {
+                val vocabFilename = "corpora/language-content/${content.partOfSpeech}/words.txt"
+                val vocab = readFile(vocabFilename).split('\n')
 
-            return Trainer(
-                vocab[content.line],
-                translation[content.line],
-                content
-            )
+                val translationFilename =
+                    "corpora/language-content/${content.partOfSpeech}/translations/${content.language}.txt"
+                val translation = readFile(translationFilename).split('\n')
 
+                val vocabWord = vocab[content.line]
+                val translationWord = translation[content.line]
+
+                trainer = Trainer(
+                    vocabWord,
+                    translationWord,
+                    content
+                )
+
+                if (similar(vocabWord, translationWord)) {
+                    found = true
+                }
+            } while (!found)
+
+            return trainer
         } else {
 
             val grammarFilename = "corpora/language-content/grammar/${content.partOfSpeech}.csv"
             val grammar = readFile(grammarFilename).split("\n")
 
-            val translationFilename = "corpora/language-content/grammar/${content.partOfSpeech}/${content.language}.txt"
+            val translationFilename =
+                "corpora/language-content/grammar/${content.partOfSpeech}/${content.language}.txt"
             val translation = readFile(translationFilename).split('\n')
 
             return Trainer(
@@ -65,6 +77,16 @@ class Corpora(application: Application) {
 
         }
 
+    }
+
+    private fun similar(vocabWord: String, translationWord: String): Boolean {
+        val normVocab = vocabWord.toLowerCase().trim()
+        val normTranslation = translationWord.toLowerCase().trim()
+
+        val same = normVocab != normTranslation
+        val vocabInTranslation = normTranslation.indexOf(normVocab) != -1
+        val translationInVocab = normVocab.indexOf(normTranslation) != -1
+        return same || vocabInTranslation || translationInVocab
     }
 
     fun getVocab(langCode: String): Content {
