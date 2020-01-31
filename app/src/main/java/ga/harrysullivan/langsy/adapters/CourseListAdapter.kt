@@ -21,6 +21,8 @@ class CourseListAdapter(
                 val courseLabel = inflater.inflate(R.layout.dashboard_course_label, parent, false)
                 courseLabel.findViewById<TextView>(R.id.course_label_language).text =
                     CourseList.localFromCode(course.language)
+                courseLabel.findViewById<TextView>(R.id.course_label_cash).text =
+                    "$${course.cash.toInt()}"
                 courseLabel.setOnClickListener {
                     callback(course)
                 }
