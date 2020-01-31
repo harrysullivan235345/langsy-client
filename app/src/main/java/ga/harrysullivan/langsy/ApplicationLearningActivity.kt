@@ -46,6 +46,12 @@ class ApplicationLearningActivity : AppCompatActivity() {
             }
         }
 
+        application_learning_home_button.setOnClickListener {
+            val intent =
+                Intent(this@ApplicationLearningActivity, DashboardActivity::class.java)
+            startActivity(intent)
+        }
+
         mTrainerViewModel.getTrainer().observeOnce(this, Observer {
             application_learning_translation.text = it.translation
             mRevealPanelAdapter.setContent(it.content, unidecode(it.translation))

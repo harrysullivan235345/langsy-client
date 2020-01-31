@@ -110,6 +110,12 @@ class AssessmentActivity : AppCompatActivity() {
             mDirtyState.data.value = AssessmentDirtyStateData(true)
             mRevealPanelAdapter.show()
         }
+
+        assessment_home_button.setOnClickListener {
+            val intent =
+                Intent(this@AssessmentActivity, DashboardActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun processAttemptedNext(trainer: Trainer, stage: Int) {

@@ -24,18 +24,34 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/semantic_learning_home_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/home_button_sm"
+        android:clickable="true"
+        android:text="&lt;-"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        app:fontFamily="sans-serif-light"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="4dp"
         android:text="3 / 3"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:fontFamily="@font/muli"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/semantic_learning_home_button" />
 
     <TextView
         android:id="@+id/semantic_learning_reveal"

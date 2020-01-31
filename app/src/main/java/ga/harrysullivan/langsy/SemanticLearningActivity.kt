@@ -56,6 +56,12 @@ class SemanticLearningActivity : AppCompatActivity() {
         semantic_learning_reveal.setOnClickListener {
             revealPanelAdapter.show()
         }
+
+        semantic_learning_home_button.setOnClickListener {
+            val intent =
+                Intent(this@SemanticLearningActivity, DashboardActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun prepareLoadAssessment(selectedContent: List<Content>) {
