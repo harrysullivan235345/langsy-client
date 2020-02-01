@@ -22,7 +22,7 @@ class SpontaneousRecallAdapter(inflater: LayoutInflater, parent: ViewGroup) {
     }
 
     fun setContent(content: String) {
-        mPanel.findViewById<TextView>(R.id.spontaneous_recall_text).text = content
+        mPanel.findViewById<TextView>(R.id.assessment_home_button).text = content
     }
 
     fun show() {
