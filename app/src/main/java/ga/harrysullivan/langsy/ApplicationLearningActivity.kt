@@ -53,8 +53,8 @@ class ApplicationLearningActivity : AppCompatActivity() {
         }
 
         mTrainerViewModel.getTrainer().observeOnce(this, Observer {
-            application_learning_translation.text = it.translation
-            mRevealPanelAdapter.setContent(it.content, unidecode(it.translation))
+            application_learning_translation.text = it.content
+            mRevealPanelAdapter.setContent(it.translation, unidecode(it.translation))
         })
     }
 

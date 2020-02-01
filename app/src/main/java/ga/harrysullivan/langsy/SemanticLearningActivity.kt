@@ -41,8 +41,8 @@ class SemanticLearningActivity : AppCompatActivity() {
 
     private fun init() {
         mTrainerViewModel.getTrainer().observeOnce(this, Observer {trainer ->
-            semantic_learning_content.text = trainer.content
-            revealPanelAdapter.setContent(trainer.translation, unidecode(trainer.translation))
+            semantic_learning_content.text = trainer.translation
+            revealPanelAdapter.setContent(trainer.content, unidecode(trainer.translation))
 
             mContentViewModel.fetchByLanguageAndStage(trainer.contentObj.language, SpacedRepetition.THRESHOLD_OF_PROBABALISTIC_MASTERY).observeOnce(this, Observer { selectedContent ->
                 prepareLoadAssessment(selectedContent)
