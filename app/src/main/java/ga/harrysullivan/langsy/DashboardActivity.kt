@@ -70,18 +70,24 @@ class DashboardActivity : AppCompatActivity() {
         mCurrentCourseViewModel.setCurrentCourse(
             CurrentCourse(course)
         )
-        mContentViewModel.fetchByLanguageAndStage(course.language, SpacedRepetition.THRESHOLD_OF_PROBABALISTIC_MASTERY).observeOnce(this, Observer {
-            val shouldGetNew = Engine.shouldDoNew(it)
-            if(shouldGetNew) {
 
-                newContent(it, course)
+        if (action == DashboardLabel.COURSE) {
+            mContentViewModel.fetchByLanguageAndStage(course.language, SpacedRepetition.THRESHOLD_OF_PROBABALISTIC_MASTERY).observeOnce(this, Observer {
+                val shouldGetNew = Engine.shouldDoNew(it)
+                if(shouldGetNew) {
 
-            } else {
+                    newContent(it, course)
 
-                practice(it)
+                } else {
 
-            }
-        })
+                    practice(it)
+
+                }
+            })
+        } else if (action == DashboardLabel.LEARNED_WORDS) {
+            val intent = Intent(this@DashboardActivity, LearnedWordsActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun newContent(

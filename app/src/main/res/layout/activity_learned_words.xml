@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_black_grey"
+    android:background="@drawable/gradient_amber_pink"
     tools:context=".LearnedWordsActivity">
 
 
@@ -55,7 +55,11 @@
                 android:id="@+id/learned_words_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="42dp"
+                android:layout_marginLeft="42dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="42dp"
+                android:layout_marginRight="42dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +67,24 @@
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/learned_words_back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="42dp"
+                android:layout_marginRight="42dp"
+                android:background="@drawable/white_button_sm"
+                android:clickable="true"
+                android:text="back"
+                android:textColor="@color/buttonText"
+                android:textSize="18sp"
+                app:fontFamily="@font/muli"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/learned_words_list" />
+
             <Space
+                android:id="@+id/space"
                 android:layout_width="match_parent"
                 android:layout_height="16dp"
                 app:layout_constraintStart_toStartOf="parent"

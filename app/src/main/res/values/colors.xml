@@ -36,4 +36,7 @@
 
     <color name="startBlackGrey">#2a272a</color>
     <color name="endBlackGrey">#4b4a54</color>
+
+    <color name="startAmberPink">#ff9671</color>
+    <color name="endAmberPink">#ff6f91</color>
 </resources>
