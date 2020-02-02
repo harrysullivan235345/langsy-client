@@ -25,6 +25,22 @@ class Corpora(application: Application) {
         return insults
     }
 
+    fun getFile(type: String, pos: String): List<String> {
+        return when(type) {
+            ContentType.VOCAB -> {
+                val vocabFilename = "corpora/language-content/${pos}/words.txt"
+                return readFile(vocabFilename).split('\n')
+            }
+
+            ContentType.GRAMMAR -> {
+                val grammarFilename = "corpora/language-content/grammar/${pos}.csv"
+                return readFile(grammarFilename).split("\n")
+            }
+
+            else -> emptyList<String>()
+        }
+    }
+
     fun getLineOfPrereq(searchPrereq: String): Int {
         val filename = "corpora/language-content/grammar/prereqs.csv"
         val prereqs = readFile(filename).split("\n").map { p -> p.replace("\r", "") }

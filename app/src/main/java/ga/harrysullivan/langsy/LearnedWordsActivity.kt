@@ -33,11 +33,11 @@ class LearnedWordsActivity : AppCompatActivity() {
         init()
     }
 
-    fun init() {
+    private fun init() {
         mCurrentCourseViewModel.getCurrentCourse().observe(this, Observer { currentCourse ->
             val course = currentCourse.course
             mContentViewModel.fetchByLanguageAndStage(course.language, 500).observeOnce(this, Observer { allContent ->
-                LearnedWordsAdapter(this.layoutInflater, learned_words_list, allContent)
+                LearnedWordsAdapter(this.layoutInflater, learned_words_list, allContent, application)
             })
         })
     }
