@@ -16,6 +16,7 @@
     <string name="semantic_learning_heading">semantic</string>
 
     <string name="assessment_learning_heading">assessment</string>
+    <string name="learned_words_heading">learned words</string>
 
     <string name="drawing_box_label">drawing</string>
     <string name="handwrite_label">handwrite</string>

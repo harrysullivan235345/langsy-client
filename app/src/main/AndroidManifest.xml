@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AssessmentActivity"></activity>
+        <activity android:name=".LearnedWordsActivity"></activity>
+        <activity android:name=".AssessmentActivity" />
         <activity android:name=".SemanticLearningActivity" />
         <activity android:name=".ApplicationLearningActivity" />
         <activity android:name=".VisualLearningActivity" />

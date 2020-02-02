@@ -33,4 +33,7 @@
 
     <color name="startWhiteGrey">#c0c0c0</color>
     <color name="endWhiteGrey">#8e99a1</color>
+
+    <color name="startBlackGrey">#2a272a</color>
+    <color name="endBlackGrey">#4b4a54</color>
 </resources>

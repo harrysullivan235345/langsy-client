@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import ga.harrysullivan.langsy.adapters.CourseListAdapter
 import ga.harrysullivan.langsy.constants.ContentType
+import ga.harrysullivan.langsy.constants.DashboardLabel
 import ga.harrysullivan.langsy.constants.SpacedRepetition
 import ga.harrysullivan.langsy.controllers.Engine
 import ga.harrysullivan.langsy.data.CurrentCourse
@@ -65,7 +66,7 @@ class DashboardActivity : AppCompatActivity() {
         dashboard_cash_label.text = "$$fixedCash"
     }
 
-    private fun courseSelectCallback(course: Course) {
+    private fun courseSelectCallback(course: Course, action: DashboardLabel) {
         mCurrentCourseViewModel.setCurrentCourse(
             CurrentCourse(course)
         )
