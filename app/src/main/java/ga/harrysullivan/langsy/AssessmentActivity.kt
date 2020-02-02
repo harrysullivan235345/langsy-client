@@ -120,7 +120,7 @@ class AssessmentActivity : AppCompatActivity() {
 
     private fun processAttemptedNext(trainer: Trainer, stage: Int) {
         val userInput = assessment_edit_text.text.toString().toLowerCase().trim()
-        if (userInput == trainer.translation.toLowerCase()) {
+        if (userInput == trainer.translation.toLowerCase().trim()) {
 
             mContentViewModel.setLastReviewed(
                 trainer.contentObj.uid,
