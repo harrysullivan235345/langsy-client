@@ -6,12 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import ga.harrysullivan.langsy.adapters.RevealPanelAdapter
+import ga.harrysullivan.langsy.data.Trainer
 import ga.harrysullivan.langsy.utils.InjectorUtils
+import ga.harrysullivan.langsy.utils.Validation
 import ga.harrysullivan.langsy.utils.observeOnce
 import ga.harrysullivan.langsy.view_models.TrainerViewModel
 import kotlinx.android.synthetic.main.activity_application_learning.*
-import kotlinx.android.synthetic.main.activity_semantic_learning.*
-import kotlinx.android.synthetic.main.activity_visual_learning.*
 import net.gcardone.junidecode.Junidecode.unidecode
 
 class ApplicationLearningActivity : AppCompatActivity() {
@@ -37,32 +37,32 @@ class ApplicationLearningActivity : AppCompatActivity() {
             mRevealPanelAdapter.show()
         }
 
-        application_learning_next_button.setOnClickListener {
-            val completed = validate()
-            if (completed) {
-                val intent =
-                    Intent(this@ApplicationLearningActivity, SemanticLearningActivity::class.java)
-                startActivity(intent)
-            }
-        }
-
         application_learning_home_button.setOnClickListener {
             val intent =
                 Intent(this@ApplicationLearningActivity, DashboardActivity::class.java)
             startActivity(intent)
         }
 
-        mTrainerViewModel.getTrainer().observeOnce(this, Observer {
-            application_learning_translation.text = it.content
-            mRevealPanelAdapter.setContent(it.translation, unidecode(it.translation))
+        mTrainerViewModel.getTrainer().observeOnce(this, Observer { trainer ->
+            application_learning_translation.text = trainer.content
+            mRevealPanelAdapter.setContent(trainer.translation, unidecode(trainer.translation))
+
+            application_learning_next_button.setOnClickListener {
+                val completed = validate(trainer)
+                if (completed) {
+                    val intent =
+                        Intent(this@ApplicationLearningActivity, SemanticLearningActivity::class.java)
+                    startActivity(intent)
+                }
+            }
         })
     }
 
-    private fun validate(): Boolean {
+    private fun validate(trainer: Trainer): Boolean {
         val transliterationDone = application_learning_transliteration.text.isNotBlank()
-        val sentenceOneDone = application_learning_sentence_1.text.isNotBlank()
-        val sentenceTwoDone = application_learning_sentence_2.text.isNotBlank()
-        val sentenceThreeDone = application_learning_sentence_3.text.isNotBlank()
+        val sentenceOneDone = Validation.validate(application_learning_sentence_1.text.toString(), trainer.translation)
+        val sentenceTwoDone = Validation.validate(application_learning_sentence_2.text.toString(), trainer.translation)
+        val sentenceThreeDone = Validation.validate(application_learning_sentence_3.text.toString(), trainer.translation)
 
         return transliterationDone && sentenceOneDone && sentenceTwoDone && sentenceThreeDone
     }
