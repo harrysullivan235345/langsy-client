@@ -85,7 +85,7 @@ class DashboardActivity : AppCompatActivity() {
                 }
             })
         } else if (action == DashboardLabel.LEARNED_WORDS) {
-            val intent = Intent(this@DashboardActivity, LearnedWordsActivity::class.java)
+            val intent = Intent(this@DashboardActivity, CourseDetailsActivity::class.java)
             startActivity(intent)
         }
     }
