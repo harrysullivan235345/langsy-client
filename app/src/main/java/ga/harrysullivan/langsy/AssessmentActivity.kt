@@ -130,7 +130,7 @@ class AssessmentActivity : AppCompatActivity() {
             mDirtyState.data.observeOnce(this, Observer { dirtyData ->
                 if (dirtyData.dirty) {
                     mCorrectAnswerAdapter.show()
-                    setCallbackWrong()
+                    setCallbackWrong(trainer)
                 } else {
                     gotRightFirstTry(trainer, stage)
                 }
@@ -186,8 +186,11 @@ class AssessmentActivity : AppCompatActivity() {
         }
     }
 
-    private fun setCallbackWrong() {
+    private fun setCallbackWrong(trainer: Trainer) {
         mCorrectAnswerAdapter.setCallback(View.OnClickListener {
+            if (trainer.contentObj.stage > 1) {
+                mContentViewModel.addToStage(trainer.contentObj.uid, -1)
+            }
             val intent =
                 Intent(this@AssessmentActivity, VisualLearningActivity::class.java)
             startActivity(intent)
