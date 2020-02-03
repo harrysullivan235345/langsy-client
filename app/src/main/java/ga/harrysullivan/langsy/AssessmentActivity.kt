@@ -201,7 +201,7 @@ class AssessmentActivity : AppCompatActivity() {
         mCorrectAnswerAdapter.setCallback(View.OnClickListener {
             mContentViewModel.fetchByLanguageAndStage(
                 trainer.contentObj.language,
-                SpacedRepetition.THRESHOLD_OF_PROBABALISTIC_MASTERY
+                SpacedRepetition.STAGES.size
             ).observeOnce(this, Observer { selectedContent ->
                 finish(selectedContent)
 
