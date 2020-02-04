@@ -145,7 +145,7 @@ class Corpora(application: Application) {
         val prereqDone = selectedContent.find { content ->
             content.partOfSpeech == GrammarPartOfSpeech.PREREQS &&
                     content.line == prereqLineNumber &&
-                    content.stage >= SpacedRepetition.THRESHOLD_OF_PROBABALISTIC_MASTERY
+                    content.stage >= SpacedRepetition.THRESHOLD_OF_PROBABILISTIC_MASTERY
         }
 
         if (prereqDone == null) {
