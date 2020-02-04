@@ -3,8 +3,6 @@ package ga.harrysullivan.langsy.daos
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ga.harrysullivan.langsy.data.CurrentCourse
-import ga.harrysullivan.langsy.data.Trainer
-import ga.harrysullivan.langsy.models.Course
 
 class CurrentCourseDao {
 

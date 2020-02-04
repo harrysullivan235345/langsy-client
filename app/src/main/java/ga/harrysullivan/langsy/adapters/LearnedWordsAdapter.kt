@@ -6,9 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import ga.harrysullivan.langsy.R
 import ga.harrysullivan.langsy.models.Content
-import ga.harrysullivan.langsy.models.Course
 import ga.harrysullivan.langsy.utils.Corpora
-import ga.harrysullivan.langsy.utils.CourseList
 
 data class File(val type: String, val pos: String)
 

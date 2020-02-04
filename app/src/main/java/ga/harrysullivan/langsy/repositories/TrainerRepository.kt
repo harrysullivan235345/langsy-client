@@ -2,7 +2,6 @@ package ga.harrysullivan.langsy.repositories
 
 import ga.harrysullivan.langsy.daos.TrainerDao
 import ga.harrysullivan.langsy.data.Trainer
-import ga.harrysullivan.langsy.databases.TrainerDatabase
 
 class TrainerRepository private constructor(private val trainerDao: TrainerDao) {
 

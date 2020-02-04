@@ -2,20 +2,17 @@ package ga.harrysullivan.langsy
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import ga.harrysullivan.langsy.adapters.CourseListAdapter
-import ga.harrysullivan.langsy.constants.ContentType
 import ga.harrysullivan.langsy.constants.DashboardLabel
 import ga.harrysullivan.langsy.constants.SpacedRepetition
 import ga.harrysullivan.langsy.controllers.Engine
 import ga.harrysullivan.langsy.data.CurrentCourse
 import ga.harrysullivan.langsy.models.Content
 import ga.harrysullivan.langsy.models.Course
-import ga.harrysullivan.langsy.utils.Corpora
 import ga.harrysullivan.langsy.utils.InjectorUtils
 import ga.harrysullivan.langsy.utils.observeOnce
 import ga.harrysullivan.langsy.view_models.ContentViewModel
@@ -23,7 +20,6 @@ import ga.harrysullivan.langsy.view_models.CourseViewModel
 import ga.harrysullivan.langsy.view_models.CurrentCourseViewModel
 import ga.harrysullivan.langsy.view_models.TrainerViewModel
 import kotlinx.android.synthetic.main.activity_dashboard.*
-import java.math.MathContext
 
 class DashboardActivity : AppCompatActivity() {
 

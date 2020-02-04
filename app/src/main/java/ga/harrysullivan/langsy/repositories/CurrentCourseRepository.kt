@@ -1,11 +1,7 @@
 package ga.harrysullivan.langsy.repositories
 
 import ga.harrysullivan.langsy.daos.CurrentCourseDao
-import ga.harrysullivan.langsy.daos.TrainerDao
 import ga.harrysullivan.langsy.data.CurrentCourse
-import ga.harrysullivan.langsy.data.Trainer
-import ga.harrysullivan.langsy.databases.TrainerDatabase
-import ga.harrysullivan.langsy.models.Course
 
 class CurrentCourseRepository private constructor(private val currentCourseDao: CurrentCourseDao) {
 

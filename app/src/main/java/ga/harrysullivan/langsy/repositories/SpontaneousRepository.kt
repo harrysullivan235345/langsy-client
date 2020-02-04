@@ -1,6 +1,5 @@
 package ga.harrysullivan.langsy.repositories
 
-import ga.harrysullivan.langsy.daos.CurrentCourseDao
 import ga.harrysullivan.langsy.daos.SpontaneousDao
 import ga.harrysullivan.langsy.data.Spontaneous
 

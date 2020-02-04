@@ -1,7 +1,6 @@
 package ga.harrysullivan.langsy.controllers
 
 import android.app.Application
-import android.util.Log
 import ga.harrysullivan.langsy.constants.ContentType
 import ga.harrysullivan.langsy.constants.SpacedRepetition
 import ga.harrysullivan.langsy.data.Trainer

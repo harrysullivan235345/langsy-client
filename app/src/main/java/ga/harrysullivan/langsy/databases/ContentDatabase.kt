@@ -6,7 +6,6 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import ga.harrysullivan.langsy.daos.ContentDao
 import ga.harrysullivan.langsy.models.Content
-import ga.harrysullivan.langsy.models.Course
 
 @Database(entities = [Content::class], version = 1)
 abstract class ContentDatabase: RoomDatabase() {

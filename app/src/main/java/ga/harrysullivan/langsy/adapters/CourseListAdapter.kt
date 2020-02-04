@@ -1,6 +1,5 @@
 package ga.harrysullivan.langsy.adapters
 
-import android.view.DragEvent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView

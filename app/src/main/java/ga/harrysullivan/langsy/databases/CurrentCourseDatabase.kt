@@ -1,7 +1,6 @@
 package ga.harrysullivan.langsy.databases
 
 import ga.harrysullivan.langsy.daos.CurrentCourseDao
-import ga.harrysullivan.langsy.daos.TrainerDao
 
 class CurrentCourseDatabase private constructor() {
 
