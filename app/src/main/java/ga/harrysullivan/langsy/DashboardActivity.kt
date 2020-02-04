@@ -72,7 +72,7 @@ class DashboardActivity : AppCompatActivity() {
         )
 
         if (action == DashboardLabel.COURSE) {
-            mContentViewModel.fetchByLanguageAndStage(course.language, SpacedRepetition.STAGES.size).observeOnce(this, Observer {
+            mContentViewModel.fetchByLanguageAndStage(course.language, SpacedRepetition.THRESHOLD_OF_MASTERY).observeOnce(this, Observer {
                 val shouldGetNew = Engine.shouldDoNew(it)
                 if(shouldGetNew) {
 
