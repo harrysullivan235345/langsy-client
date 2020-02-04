@@ -26,7 +26,7 @@ class Corpora(application: Application) {
     }
 
     fun getFile(type: String, pos: String): List<String> {
-        return when(type) {
+        return when (type) {
             ContentType.VOCAB -> {
                 val vocabFilename = "corpora/language-content/${pos}/words.txt"
                 return readFile(vocabFilename).split('\n')
@@ -115,7 +115,9 @@ class Corpora(application: Application) {
         var found = false
         do {
             lineNumber = Random.int(vocab.size - 1)
-            val doneLineNumbers = selectedContent.filter { it.partOfSpeech == pos && it.line == lineNumber }.map { it.line }
+            val doneLineNumbers =
+                selectedContent.filter { it.partOfSpeech == pos && it.line == lineNumber }
+                    .map { it.line }
             if (doneLineNumbers.indexOf(lineNumber) == -1) {
                 found = true
             }
@@ -134,7 +136,9 @@ class Corpora(application: Application) {
         var found = false
         do {
             lineNumber = Random.int(grammar.size)
-            val doneLineNumbers = selectedContent.filter { it.partOfSpeech == pos && it.line == lineNumber }.map { it.line }
+            val doneLineNumbers =
+                selectedContent.filter { it.partOfSpeech == pos && it.line == lineNumber }
+                    .map { it.line }
             if (doneLineNumbers.indexOf(lineNumber) == -1) {
                 found = true
             }
@@ -149,7 +153,15 @@ class Corpora(application: Application) {
         }
 
         if (prereqDone == null) {
-            return Content(0, 0, ContentType.GRAMMAR, prereqLineNumber, 0, langCode, GrammarPartOfSpeech.PREREQS)
+            return Content(
+                0,
+                0,
+                ContentType.GRAMMAR,
+                prereqLineNumber,
+                0,
+                langCode,
+                GrammarPartOfSpeech.PREREQS
+            )
         } else {
             return Content(0, 0, ContentType.GRAMMAR, lineNumber, 0, langCode, pos)
         }

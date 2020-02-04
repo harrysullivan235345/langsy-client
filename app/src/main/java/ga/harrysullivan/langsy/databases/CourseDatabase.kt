@@ -8,7 +8,7 @@ import ga.harrysullivan.langsy.daos.CourseDao
 import ga.harrysullivan.langsy.models.Course
 
 @Database(entities = [Course::class], version = 1)
-abstract class CourseDatabase: RoomDatabase() {
+abstract class CourseDatabase : RoomDatabase() {
 
     abstract fun courseDao(): CourseDao
 

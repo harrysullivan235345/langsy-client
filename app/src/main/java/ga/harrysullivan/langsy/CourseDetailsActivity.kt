@@ -25,7 +25,8 @@ class CourseDetailsActivity : AppCompatActivity() {
         mCurrentCourseViewModel = ViewModelProviders.of(this, currentCourseFactory)
             .get(CurrentCourseViewModel::class.java)
 
-        mContentViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(ContentViewModel::class.java)
+        mContentViewModel = ViewModelProvider.AndroidViewModelFactory(application)
+            .create(ContentViewModel::class.java)
 
         init()
     }
@@ -33,9 +34,10 @@ class CourseDetailsActivity : AppCompatActivity() {
     private fun init() {
         mCurrentCourseViewModel.getCurrentCourse().observe(this, Observer { currentCourse ->
             val course = currentCourse.course
-            mContentViewModel.fetchByLanguageAndStage(course.language, 500).observeOnce(this, Observer { allContent ->
-                course_details_big_number.text = allContent.size.toString()
-            })
+            mContentViewModel.fetchByLanguageAndStage(course.language, 500)
+                .observeOnce(this, Observer { allContent ->
+                    course_details_big_number.text = allContent.size.toString()
+                })
         })
 
         setListeners()

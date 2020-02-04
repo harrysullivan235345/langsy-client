@@ -8,7 +8,7 @@ import ga.harrysullivan.langsy.daos.ContentDao
 import ga.harrysullivan.langsy.models.Content
 
 @Database(entities = [Content::class], version = 1)
-abstract class ContentDatabase: RoomDatabase() {
+abstract class ContentDatabase : RoomDatabase() {
 
     abstract fun contentDao(): ContentDao
 

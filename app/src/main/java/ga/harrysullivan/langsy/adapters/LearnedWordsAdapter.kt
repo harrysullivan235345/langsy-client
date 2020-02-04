@@ -16,15 +16,17 @@ class LearnedWordsAdapter(
     contents: List<Content>,
     application: Application
 ) {
-//    private val dummyData = arrayOf("thins", "other this", "elsa", "hwwer", "foxes", "elsa")
+    //    private val dummyData = arrayOf("thins", "other this", "elsa", "hwwer", "foxes", "elsa")
     private val mApplication: Application = application
+
     init {
 
         val filledContents = fill(contents)
 
         filledContents.forEach { content ->
             val courseLabel = inflater.inflate(R.layout.learned_words_label, parent, false)
-            courseLabel.findViewById<TextView>(R.id.learned_word_label_content).text = content.toString()
+            courseLabel.findViewById<TextView>(R.id.learned_word_label_content).text =
+                content.toString()
             parent.addView(courseLabel)
         }
     }
@@ -37,7 +39,7 @@ class LearnedWordsAdapter(
 
         distinct.forEach { content ->
             val fileData = Corpora(mApplication).getFile(content.type, content.partOfSpeech)
-            fileDatas[content.partOfSpeech] =  fileData
+            fileDatas[content.partOfSpeech] = fileData
         }
 
         val filled = contents.map { content ->

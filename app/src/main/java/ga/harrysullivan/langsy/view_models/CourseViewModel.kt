@@ -9,7 +9,7 @@ import ga.harrysullivan.langsy.models.Course
 import ga.harrysullivan.langsy.repositories.CourseRepository
 import kotlinx.coroutines.launch
 
-class CourseViewModel(application: Application): AndroidViewModel(application) {
+class CourseViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: CourseRepository
 
     val allCourses: LiveData<List<Course>>

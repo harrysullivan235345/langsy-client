@@ -20,7 +20,7 @@ object CourseList {
         listOf<String>("sw", "kiswahili")
     )
 
-    fun localFromCode(code : String): String {
+    fun localFromCode(code: String): String {
         return languages.find { language -> language[0] == code }!![1]
     }
 }

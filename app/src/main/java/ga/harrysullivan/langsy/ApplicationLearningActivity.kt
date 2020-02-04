@@ -33,7 +33,7 @@ class ApplicationLearningActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        application_learning_reveal.setOnClickListener{
+        application_learning_reveal.setOnClickListener {
             mRevealPanelAdapter.show()
         }
 
@@ -51,7 +51,10 @@ class ApplicationLearningActivity : AppCompatActivity() {
                 val completed = validate(trainer)
                 if (completed) {
                     val intent =
-                        Intent(this@ApplicationLearningActivity, SemanticLearningActivity::class.java)
+                        Intent(
+                            this@ApplicationLearningActivity,
+                            SemanticLearningActivity::class.java
+                        )
                     startActivity(intent)
                 }
             }
@@ -60,9 +63,18 @@ class ApplicationLearningActivity : AppCompatActivity() {
 
     private fun validate(trainer: Trainer): Boolean {
         val transliterationDone = application_learning_transliteration.text.isNotBlank()
-        val sentenceOneDone = Validation.validate(application_learning_sentence_1.text.toString(), trainer.translation)
-        val sentenceTwoDone = Validation.validate(application_learning_sentence_2.text.toString(), trainer.translation)
-        val sentenceThreeDone = Validation.validate(application_learning_sentence_3.text.toString(), trainer.translation)
+        val sentenceOneDone = Validation.validate(
+            application_learning_sentence_1.text.toString(),
+            trainer.translation
+        )
+        val sentenceTwoDone = Validation.validate(
+            application_learning_sentence_2.text.toString(),
+            trainer.translation
+        )
+        val sentenceThreeDone = Validation.validate(
+            application_learning_sentence_3.text.toString(),
+            trainer.translation
+        )
 
         return transliterationDone && sentenceOneDone && sentenceTwoDone && sentenceThreeDone
     }

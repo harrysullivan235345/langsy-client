@@ -18,7 +18,8 @@ class CourseSelectionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_course_selection)
 
-        courseViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(CourseViewModel::class.java)
+        courseViewModel = ViewModelProvider.AndroidViewModelFactory(application)
+            .create(CourseViewModel::class.java)
 
         CourseSelectionAdapter(
             this.layoutInflater,

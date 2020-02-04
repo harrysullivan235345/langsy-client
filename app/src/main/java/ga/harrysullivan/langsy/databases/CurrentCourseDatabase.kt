@@ -9,8 +9,10 @@ class CurrentCourseDatabase private constructor() {
 
     companion object {
 
-        @Volatile private var instance: CurrentCourseDatabase? = null
-        fun getInstance()=
+        @Volatile
+        private var instance: CurrentCourseDatabase? = null
+
+        fun getInstance() =
             instance ?: synchronized(this) {
                 instance ?: CurrentCourseDatabase().also { instance = it }
             }

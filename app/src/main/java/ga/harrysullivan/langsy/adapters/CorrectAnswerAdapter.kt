@@ -8,6 +8,7 @@ import ga.harrysullivan.langsy.R
 
 class CorrectAnswerAdapter(inflater: LayoutInflater, parent: ViewGroup) {
     private val mPanel: View
+
     init {
         mPanel = inflater.inflate(R.layout.correct_answer_panel, parent, false)
         hide()

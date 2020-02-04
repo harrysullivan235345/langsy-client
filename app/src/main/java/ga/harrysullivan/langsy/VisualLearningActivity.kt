@@ -49,7 +49,7 @@ class VisualLearningActivity : AppCompatActivity() {
                 Intent(this@VisualLearningActivity, ApplicationLearningActivity::class.java)
             startActivity(intent)
         }
-        
+
         visual_learning_home_button.setOnClickListener {
             val intent =
                 Intent(this@VisualLearningActivity, DashboardActivity::class.java)

@@ -9,7 +9,7 @@ import ga.harrysullivan.langsy.models.Content
 import ga.harrysullivan.langsy.repositories.ContentRepository
 import kotlinx.coroutines.launch
 
-class ContentViewModel(application: Application): AndroidViewModel(application) {
+class ContentViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: ContentRepository
 
     val allContent: LiveData<List<Content>>

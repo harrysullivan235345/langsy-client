@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModelProvider
 import ga.harrysullivan.langsy.repositories.TrainerRepository
 import ga.harrysullivan.langsy.view_models.TrainerViewModel
 
-class TrainerViewModelFactory(private val trainerRepository: TrainerRepository):
-    ViewModelProvider.NewInstanceFactory(){
+class TrainerViewModelFactory(private val trainerRepository: TrainerRepository) :
+    ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

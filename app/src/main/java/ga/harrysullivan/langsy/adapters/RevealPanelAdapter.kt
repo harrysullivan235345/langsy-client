@@ -8,6 +8,7 @@ import ga.harrysullivan.langsy.R
 
 class RevealPanelAdapter(inflater: LayoutInflater, parent: ViewGroup) {
     private val mPanel: View
+
     init {
         mPanel = inflater.inflate(R.layout.reveal_panel, parent, false)
         hide()

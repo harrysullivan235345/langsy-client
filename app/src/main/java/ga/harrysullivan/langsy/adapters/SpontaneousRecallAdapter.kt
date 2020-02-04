@@ -8,6 +8,7 @@ import ga.harrysullivan.langsy.R
 
 class SpontaneousRecallAdapter(inflater: LayoutInflater, parent: ViewGroup) {
     private val mPanel: View
+
     init {
         mPanel = inflater.inflate(R.layout.spontaneous_recall, parent, false)
         hide()

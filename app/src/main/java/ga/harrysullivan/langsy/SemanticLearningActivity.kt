@@ -32,7 +32,8 @@ class SemanticLearningActivity : AppCompatActivity() {
             .get(TrainerViewModel::class.java)
 
         mContentViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(
-            ContentViewModel::class.java)
+            ContentViewModel::class.java
+        )
 
         revealPanelAdapter = RevealPanelAdapter(this.layoutInflater, semantic_learning_root)
 
@@ -40,11 +41,14 @@ class SemanticLearningActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        mTrainerViewModel.getTrainer().observeOnce(this, Observer {trainer ->
+        mTrainerViewModel.getTrainer().observeOnce(this, Observer { trainer ->
             semantic_learning_content.text = trainer.translation
             revealPanelAdapter.setContent(trainer.content, unidecode(trainer.translation))
 
-            mContentViewModel.fetchByLanguageAndStage(trainer.contentObj.language, SpacedRepetition.THRESHOLD_OF_PROBABILISTIC_MASTERY).observeOnce(this, Observer { selectedContent ->
+            mContentViewModel.fetchByLanguageAndStage(
+                trainer.contentObj.language,
+                SpacedRepetition.THRESHOLD_OF_PROBABILISTIC_MASTERY
+            ).observeOnce(this, Observer { selectedContent ->
                 prepareLoadAssessment(selectedContent)
             })
         })

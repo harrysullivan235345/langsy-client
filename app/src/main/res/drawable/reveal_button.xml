@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" >
+    <item android:state_pressed="true">
         <shape android:shape="oval">
-            <solid android:color="#E79600"/>
+            <solid android:color="#E79600" />
             <padding android:top="8dp" android:left="20dp" android:right="20dp" android:bottom="12dp" />
         </shape>
     </item>
 
     <item>
         <shape android:shape="oval">
-            <solid android:color="#FFAB00"/>
+            <solid android:color="#FFAB00" />
             <padding android:top="10dp" android:left="10dp" android:right="10dp" android:bottom="10dp" />
         </shape>
     </item>

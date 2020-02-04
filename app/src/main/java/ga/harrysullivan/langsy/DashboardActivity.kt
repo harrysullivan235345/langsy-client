@@ -45,11 +45,18 @@ class DashboardActivity : AppCompatActivity() {
         mCurrentCourseViewModel = ViewModelProviders.of(this, currentCourseFactory)
             .get(CurrentCourseViewModel::class.java)
 
-        mCourseViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(CourseViewModel::class.java)
-        mContentViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(ContentViewModel::class.java)
+        mCourseViewModel = ViewModelProvider.AndroidViewModelFactory(application)
+            .create(CourseViewModel::class.java)
+        mContentViewModel = ViewModelProvider.AndroidViewModelFactory(application)
+            .create(ContentViewModel::class.java)
 
         mCourseViewModel.allCourses.observeOnce(this, Observer { courses ->
-            CourseListAdapter(this.layoutInflater, dashboard_courselist, courses, ::courseSelectCallback)
+            CourseListAdapter(
+                this.layoutInflater,
+                dashboard_courselist,
+                courses,
+                ::courseSelectCallback
+            )
             setCash(courses)
         })
     }
@@ -68,9 +75,12 @@ class DashboardActivity : AppCompatActivity() {
         )
 
         if (action == DashboardLabel.COURSE) {
-            mContentViewModel.fetchByLanguageAndStage(course.language, SpacedRepetition.THRESHOLD_OF_MASTERY).observeOnce(this, Observer {
+            mContentViewModel.fetchByLanguageAndStage(
+                course.language,
+                SpacedRepetition.THRESHOLD_OF_MASTERY
+            ).observeOnce(this, Observer {
                 val shouldGetNew = Engine.shouldDoNew(it)
-                if(shouldGetNew) {
+                if (shouldGetNew) {
 
                     newContent(it, course)
 
