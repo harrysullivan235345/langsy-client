@@ -19,7 +19,7 @@ object Engine {
         }
 
         val overdueEmpty = overdue.isEmpty()
-        val availableMemory = selectedContent.size < SpacedRepetition.WORKING_MEMORY_CAPACITY
+        val availableMemory = selectedContent.count { it.stage < SpacedRepetition.THRESHOLD_OF_PROBABILISTIC_MASTERY } < SpacedRepetition.WORKING_MEMORY_CAPACITY
 
         return availableMemory || overdueEmpty
     }
@@ -29,22 +29,24 @@ object Engine {
         application: Application,
         course: Course
     ): Pair<Content, Trainer> {
-        val totalGrammar = selectedContent.takeIf { it.isNotEmpty() }?.fold(0) { acc, content ->
-            if (content.type == ContentType.GRAMMAR) acc + 1 else acc
-        } ?: 0
+        val totalGrammar = selectedContent.count { it.type == ContentType.GRAMMAR && it.stage < SpacedRepetition.THRESHOLD_OF_PROBABILISTIC_MASTERY }
 
         val corpora = Corpora(application)
 
-        if (totalGrammar > SpacedRepetition.MAX_GRAMMAR) {
-            val content = corpora.getVocab(course.language, selectedContent)
-            val trainer = corpora.getTrainer(content)
+        return when(totalGrammar > SpacedRepetition.MAX_GRAMMAR) {
+            true -> {
+                val content = corpora.getVocab(course.language, selectedContent)
+                val trainer = corpora.getTrainer(content)
 
-            return Pair(content, trainer)
-        } else {
-            val content = corpora.getGrammar(course.language, selectedContent)
-            val trainer = corpora.getTrainer(content)
+                Pair(content, trainer)
+            }
 
-            return Pair(content, trainer)
+            false -> {
+                val content = corpora.getGrammar(course.language, selectedContent)
+                val trainer = corpora.getTrainer(content)
+
+                Pair(content, trainer)
+            }
         }
     }
 
