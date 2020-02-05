@@ -121,7 +121,7 @@
                 android:layout_marginRight="42dp"
                 android:background="@drawable/edit_text"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="textNoSuggestions|textPersonName"
                 android:selectAllOnFocus="false"
                 android:textColor="@android:color/white"
                 android:textCursorDrawable="@null"
