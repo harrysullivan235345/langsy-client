@@ -83,11 +83,17 @@ class Corpora(application: Application) {
 
             val translationFilename =
                 "corpora/language-content/grammar/${content.partOfSpeech}/${content.language}.txt"
-            val translation = readFile(translationFilename).split('\n')
+            val translationFile = readFile(translationFilename).split('\n')
+            val translationWithPeriod = translationFile[content.line]
+            val translationWithoutPeriod = when (translationWithPeriod.last() == '.') {
+                true -> translationWithPeriod.substring(0, translationWithPeriod.length - 1)
+
+                false -> translationWithPeriod
+            }
 
             return Trainer(
                 grammar[content.line].split(",")[0],
-                translation[content.line],
+                translationWithoutPeriod,
                 content
             )
 
