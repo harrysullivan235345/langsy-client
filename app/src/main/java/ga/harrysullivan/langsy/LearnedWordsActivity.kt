@@ -1,5 +1,6 @@
 package ga.harrysullivan.langsy
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -44,5 +45,15 @@ class LearnedWordsActivity : AppCompatActivity() {
                     )
                 })
         })
+
+        setListeners()
+    }
+
+    private fun setListeners() {
+        learned_words_back_button.setOnClickListener {
+            val intent =
+                Intent(this@LearnedWordsActivity, CourseDetailsActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
