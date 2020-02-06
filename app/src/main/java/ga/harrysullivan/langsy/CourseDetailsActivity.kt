@@ -31,6 +31,9 @@ class CourseDetailsActivity : AppCompatActivity() {
         mContentViewModel = ViewModelProvider.AndroidViewModelFactory(application)
             .create(ContentViewModel::class.java)
 
+        mCourseViewModel = ViewModelProvider.AndroidViewModelFactory(application)
+            .create(CourseViewModel::class.java)
+
         init()
     }
 
