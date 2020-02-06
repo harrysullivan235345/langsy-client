@@ -28,6 +28,10 @@ class ContentViewModel(application: Application) : AndroidViewModel(application)
         return repository.fetchPractice(langCode)
     }
 
+    fun dropCourse(language: String)= viewModelScope.launch {
+        repository.dropCourse(language)
+    }
+
     fun addToStage(uid: Int, amt: Int) = viewModelScope.launch {
         repository.addToStage(uid, amt)
     }

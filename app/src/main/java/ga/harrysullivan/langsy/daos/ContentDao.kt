@@ -22,6 +22,9 @@ public interface ContentDao {
     @Query("update Content set lastReviewed = :time where uid = :uid")
     suspend fun setLastReviewed(uid: Int, time: Long)
 
+    @Query("delete from Content where language = :language")
+    suspend fun dropCourse(language: String)
+
     @Insert
     suspend fun insert(arg: Content)
 

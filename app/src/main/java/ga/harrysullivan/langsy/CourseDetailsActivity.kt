@@ -10,6 +10,7 @@ import ga.harrysullivan.langsy.utils.CourseList
 import ga.harrysullivan.langsy.utils.InjectorUtils
 import ga.harrysullivan.langsy.utils.observeOnce
 import ga.harrysullivan.langsy.view_models.ContentViewModel
+import ga.harrysullivan.langsy.view_models.CourseViewModel
 import ga.harrysullivan.langsy.view_models.CurrentCourseViewModel
 import kotlinx.android.synthetic.main.activity_course_details.*
 
@@ -17,6 +18,7 @@ class CourseDetailsActivity : AppCompatActivity() {
 
     private lateinit var mContentViewModel: ContentViewModel
     private lateinit var mCurrentCourseViewModel: CurrentCourseViewModel
+    private lateinit var mCourseViewModel: CourseViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +35,7 @@ class CourseDetailsActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        mCurrentCourseViewModel.getCurrentCourse().observe(this, Observer { currentCourse ->
+        mCurrentCourseViewModel.getCurrentCourse().observeOnce(this, Observer { currentCourse ->
             val course = currentCourse.course
             val languageFull = CourseList.localFromCode(course.language)
 
@@ -67,6 +69,13 @@ class CourseDetailsActivity : AppCompatActivity() {
     }
 
     private fun dropCourse() {
-        
+        mCurrentCourseViewModel.getCurrentCourse().observeOnce(this, Observer { currentCourse ->
+            mCourseViewModel.delete(currentCourse.course)
+            mContentViewModel.dropCourse(currentCourse.course.language)
+
+            val intent =
+                Intent(this@CourseDetailsActivity, DashboardActivity::class.java)
+            startActivity(intent)
+        })
     }
 }

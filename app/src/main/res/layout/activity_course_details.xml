@@ -47,7 +47,7 @@
         android:textColor="@color/buttonText"
         android:textSize="70sp"
         app:fontFamily="@font/muli"
-        app:layout_constraintBottom_toTopOf="@+id/learned_words_drop_button"
+        app:layout_constraintBottom_toTopOf="@+id/course_details_drop_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/course_details_language_label" />

@@ -23,6 +23,10 @@ class ContentRepository(private val contentDao: ContentDao) {
         contentDao.setLastReviewed(uid, time)
     }
 
+    suspend fun dropCourse(language: String) {
+        contentDao.dropCourse(language)
+    }
+
     suspend fun insert(arg: Content) {
         contentDao.insert(arg)
     }

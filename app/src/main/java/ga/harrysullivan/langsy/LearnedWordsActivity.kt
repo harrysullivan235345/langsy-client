@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import ga.harrysullivan.langsy.adapters.LearnedWordsAdapter
+import ga.harrysullivan.langsy.utils.CourseList
 import ga.harrysullivan.langsy.utils.InjectorUtils
 import ga.harrysullivan.langsy.utils.observeOnce
 import ga.harrysullivan.langsy.view_models.ContentViewModel
@@ -44,6 +45,8 @@ class LearnedWordsActivity : AppCompatActivity() {
                         application
                     )
                 })
+
+            learned_words_language_label.text = CourseList.localFromCode(course.language)
         })
 
         setListeners()
