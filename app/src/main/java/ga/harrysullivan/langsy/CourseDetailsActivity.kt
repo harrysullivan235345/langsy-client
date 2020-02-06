@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import ga.harrysullivan.langsy.utils.CourseList
 import ga.harrysullivan.langsy.utils.InjectorUtils
 import ga.harrysullivan.langsy.utils.observeOnce
 import ga.harrysullivan.langsy.view_models.ContentViewModel
@@ -34,6 +35,10 @@ class CourseDetailsActivity : AppCompatActivity() {
     private fun init() {
         mCurrentCourseViewModel.getCurrentCourse().observe(this, Observer { currentCourse ->
             val course = currentCourse.course
+            val languageFull = CourseList.localFromCode(course.language)
+
+            course_details_language_label.text = languageFull
+
             mContentViewModel.fetchByLanguageAndStage(course.language, 500)
                 .observeOnce(this, Observer { allContent ->
                     course_details_big_number.text = allContent.size.toString()
@@ -49,5 +54,19 @@ class CourseDetailsActivity : AppCompatActivity() {
                 Intent(this@CourseDetailsActivity, LearnedWordsActivity::class.java)
             startActivity(intent)
         }
+
+        course_details_back_button.setOnClickListener {
+            val intent =
+                Intent(this@CourseDetailsActivity, DashboardActivity::class.java)
+            startActivity(intent)
+        }
+
+        course_details_drop_button.setOnClickListener {
+            dropCourse()
+        }
+    }
+
+    private fun dropCourse() {
+        
     }
 }
