@@ -2,6 +2,7 @@ package ga.harrysullivan.langsy.constants
 
 object SpacedRepetition {
     val STAGES = intArrayOf(
+        5, // 5 sec
         25, // 25 sec
         2 * 60, // 2 min
         10 * 60, // 10 min
