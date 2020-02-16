@@ -20,10 +20,7 @@ import ga.harrysullivan.langsy.state.AssessmentDirtyState
 import ga.harrysullivan.langsy.stateData.AssessmentDirtyStateData
 import ga.harrysullivan.langsy.utils.InjectorUtils
 import ga.harrysullivan.langsy.utils.observeOnce
-import ga.harrysullivan.langsy.view_models.ContentViewModel
-import ga.harrysullivan.langsy.view_models.CourseViewModel
-import ga.harrysullivan.langsy.view_models.CurrentCourseViewModel
-import ga.harrysullivan.langsy.view_models.TrainerViewModel
+import ga.harrysullivan.langsy.view_models.*
 import kotlinx.android.synthetic.main.activity_assessment.*
 import net.gcardone.junidecode.Junidecode.unidecode
 
@@ -37,6 +34,8 @@ class AssessmentActivity : AppCompatActivity() {
     private lateinit var mCurrentCourseViewModel: CurrentCourseViewModel
     private lateinit var mDirtyState: AssessmentDirtyState
     private lateinit var mRevealPanelAdapter: RevealPanelAdapter
+//    private lateinit var mSpontaneousViewModel: SpontaneousViewModel
+//    private lateinit var mSpontaneousRecallAdapter: SpontaneousRecallAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,8 +46,6 @@ class AssessmentActivity : AppCompatActivity() {
 
         mCourseViewModel = ViewModelProvider.AndroidViewModelFactory(application)
             .create(CourseViewModel::class.java)
-
-        mCorrectAnswerAdapter = CorrectAnswerAdapter(this.layoutInflater, assessment_root)
 
 //        val spontaneousRecallAdapter = SpontaneousRecallAdapter(this.layoutInflater, assessment_root)
 //        Handler().postDelayed({
@@ -63,9 +60,15 @@ class AssessmentActivity : AppCompatActivity() {
         mCurrentCourseViewModel = ViewModelProviders.of(this, currentCourseFactory)
             .get(CurrentCourseViewModel::class.java)
 
+//        val spontaneousFactory = InjectorUtils.provideSpontaneousViewModelFactory()
+//        mSpontaneousViewModel = ViewModelProviders.of(this, spontaneousFactory)
+//            .get(SpontaneousViewModel::class.java)
+
         mDirtyState = ViewModelProviders.of(this).get(AssessmentDirtyState::class.java)
 
         mRevealPanelAdapter = RevealPanelAdapter(this.layoutInflater, assessment_root)
+//        mSpontaneousRecallAdapter = SpontaneousRecallAdapter(this.layoutInflater, assessment_root)
+        mCorrectAnswerAdapter = CorrectAnswerAdapter(this.layoutInflater, assessment_root)
 
         init()
     }

@@ -1,10 +1,13 @@
 package ga.harrysullivan.langsy.utils
 
 import ga.harrysullivan.langsy.databases.CurrentCourseDatabase
+import ga.harrysullivan.langsy.databases.SpontaneousDatabase
 import ga.harrysullivan.langsy.databases.TrainerDatabase
 import ga.harrysullivan.langsy.repositories.CurrentCourseRepository
+import ga.harrysullivan.langsy.repositories.SpontaneousRepository
 import ga.harrysullivan.langsy.repositories.TrainerRepository
 import ga.harrysullivan.langsy.view_model_factories.CurrentCourseViewModelFactory
+import ga.harrysullivan.langsy.view_model_factories.SpontaneousViewModelFactory
 import ga.harrysullivan.langsy.view_model_factories.TrainerViewModelFactory
 
 object InjectorUtils {
@@ -18,5 +21,11 @@ object InjectorUtils {
         val currentCourseDao =
             CurrentCourseRepository.getInstance(CurrentCourseDatabase.getInstance().currentCourseDao)
         return CurrentCourseViewModelFactory(currentCourseDao)
+    }
+
+    fun provideSpontaneousViewModelFactory(): SpontaneousViewModelFactory {
+        val spontaneousDao =
+            SpontaneousRepository.getInstance(SpontaneousDatabase.getInstance().spontaneousDao)
+        return SpontaneousViewModelFactory(spontaneousDao)
     }
 }
