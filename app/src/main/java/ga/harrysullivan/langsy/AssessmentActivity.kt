@@ -66,7 +66,11 @@ class AssessmentActivity : AppCompatActivity() {
 
         mDirtyState = ViewModelProviders.of(this).get(AssessmentDirtyState::class.java)
 
-        mRevealPanelAdapter = RevealPanelAdapter(this.layoutInflater, assessment_root)
+        mRevealPanelAdapter = RevealPanelAdapter(
+            this.layoutInflater,
+            assessment_root,
+            ::handleReportContent
+        )
 //        mSpontaneousRecallAdapter = SpontaneousRecallAdapter(this.layoutInflater, assessment_root)
         mCorrectAnswerAdapter = CorrectAnswerAdapter(this.layoutInflater, assessment_root)
 
@@ -219,5 +223,15 @@ class AssessmentActivity : AppCompatActivity() {
 
     private fun toPct(n: Double): String {
         return "${(n * 100).toInt()}%"
+    }
+
+    private fun handleReportContent() {
+        mTrainerViewModel.getTrainer().observeOnce(this, Observer { trainer ->
+            mContentViewModel.delete(trainer.contentObj)
+
+            val intent =
+                Intent(this@AssessmentActivity, DashboardActivity::class.java)
+            startActivity(intent)
+        })
     }
 }

@@ -35,7 +35,11 @@ class SemanticLearningActivity : AppCompatActivity() {
             ContentViewModel::class.java
         )
 
-        revealPanelAdapter = RevealPanelAdapter(this.layoutInflater, semantic_learning_root)
+        revealPanelAdapter = RevealPanelAdapter(
+            this.layoutInflater,
+            semantic_learning_root,
+            ::handleReportContent
+        )
 
         init()
     }
@@ -78,5 +82,15 @@ class SemanticLearningActivity : AppCompatActivity() {
                 Intent(this@SemanticLearningActivity, AssessmentActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun handleReportContent() {
+        mTrainerViewModel.getTrainer().observeOnce(this, Observer { trainer ->
+            mContentViewModel.delete(trainer.contentObj)
+        })
+
+        val intent =
+            Intent(this@SemanticLearningActivity, DashboardActivity::class.java)
+        startActivity(intent)
     }
 }

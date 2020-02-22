@@ -5,18 +5,32 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import ga.harrysullivan.langsy.R
+import kotlin.reflect.KFunction0
 
-class RevealPanelAdapter(inflater: LayoutInflater, parent: ViewGroup) {
-    private val mPanel: View
+class RevealPanelAdapter(
+    inflater: LayoutInflater,
+    parent: ViewGroup,
+    onReport: KFunction0<Unit>
+) {
+    private val mPanel: View = inflater.inflate(R.layout.reveal_panel, parent, false)
+    private val mOnReport = onReport
 
     init {
-        mPanel = inflater.inflate(R.layout.reveal_panel, parent, false)
         hide()
 
+        setListeners()
+        parent.addView(mPanel)
+    }
+
+    private fun setListeners() {
         mPanel.findViewById<TextView>(R.id.reveal_panel_hide).setOnClickListener {
             hide()
         }
-        parent.addView(mPanel)
+
+        mPanel.findViewById<TextView>(R.id.reveal_panel_report).setOnLongClickListener {
+            mOnReport()
+            true
+        }
     }
 
     fun setContent(big: String, small: String) {

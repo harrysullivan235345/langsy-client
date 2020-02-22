@@ -4,12 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import ga.harrysullivan.langsy.adapters.RevealPanelAdapter
 import ga.harrysullivan.langsy.data.Trainer
 import ga.harrysullivan.langsy.utils.InjectorUtils
 import ga.harrysullivan.langsy.utils.Validation
 import ga.harrysullivan.langsy.utils.observeOnce
+import ga.harrysullivan.langsy.view_models.ContentViewModel
 import ga.harrysullivan.langsy.view_models.TrainerViewModel
 import kotlinx.android.synthetic.main.activity_application_learning.*
 import net.gcardone.junidecode.Junidecode.unidecode
@@ -18,12 +20,20 @@ class ApplicationLearningActivity : AppCompatActivity() {
 
     private lateinit var mRevealPanelAdapter: RevealPanelAdapter
     private lateinit var mTrainerViewModel: TrainerViewModel
+    private lateinit var mContentViewModel: ContentViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_application_learning)
 
-        mRevealPanelAdapter = RevealPanelAdapter(this.layoutInflater, application_learning_root)
+        mContentViewModel = ViewModelProvider.AndroidViewModelFactory(application)
+            .create(ContentViewModel::class.java)
+
+        mRevealPanelAdapter = RevealPanelAdapter(
+            this.layoutInflater,
+            application_learning_root,
+            ::handleReportContent
+        )
 
         val trainerFactory = InjectorUtils.provideTrainerViewModelFactory()
         mTrainerViewModel = ViewModelProviders.of(this, trainerFactory)
@@ -77,5 +87,15 @@ class ApplicationLearningActivity : AppCompatActivity() {
         )
 
         return transliterationDone && sentenceOneDone && sentenceTwoDone && sentenceThreeDone
+    }
+
+    private fun handleReportContent() {
+        mTrainerViewModel.getTrainer().observeOnce(this, Observer { trainer ->
+            mContentViewModel.delete(trainer.contentObj)
+
+            val intent =
+                Intent(this@ApplicationLearningActivity, DashboardActivity::class.java)
+            startActivity(intent)
+        })
     }
 }
