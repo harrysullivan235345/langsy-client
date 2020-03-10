@@ -1,7 +1,9 @@
 package ga.harrysullivan.langsy
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -67,7 +69,20 @@ class CourseDetailsActivity : AppCompatActivity() {
         }
 
         course_details_drop_button.setOnClickListener {
-            dropCourse()
+            val alertBuilder = AlertDialog.Builder(this)
+            alertBuilder.setMessage("Are you sure you want yo drop this course? " +
+                    "This action is irreversible")
+                .setPositiveButton("Yes", DialogInterface.OnClickListener {
+                        dialog, id -> dropCourse()
+                })
+
+                .setNegativeButton("No", DialogInterface.OnClickListener {
+                        dialog, id -> dialog.cancel()
+                })
+
+            val alert = alertBuilder.create()
+            alert.setTitle("Drop Course Confirmation")
+            alert.show()
         }
     }
 
